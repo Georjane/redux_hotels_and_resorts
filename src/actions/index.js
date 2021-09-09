@@ -1,6 +1,12 @@
-const LOGIN = (data) => ({
+export const LOGIN = (data) => ({
   type: 'LOGIN',
   payload: data,
 });
 
-export default LOGIN;
+export const LOGOUT = () => ({
+  type: 'LOGOUT',
+});
+
+export const SIGNOUT = () => ({
+  type: 'SIGNOUT',
+});
