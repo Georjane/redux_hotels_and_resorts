@@ -1,10 +1,29 @@
 import React from 'react';
+import { connect } from 'react-redux';
+// import { useEffect } from 'react';
+import PropTypes from 'prop-types';
 
-const Dashboard = () => (
-  <div>
-    <h1>Dashboard</h1>
-    <h1>Dashboard</h1>
-  </div>
-);
+function Dashboard(props) {
+  const { loggedInStatus } = props;
+  console.log(props);
+  console.log(loggedInStatus);
+  return (
+    <div>
+      <h1>Dashboard</h1>
+      <h1>
+        Status:
+        {loggedInStatus}
+      </h1>
+    </div>
+  );
+}
 
-export default Dashboard;
+Dashboard.propTypes = {
+  loggedInStatus: PropTypes.objectOf(PropTypes.any).isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  loggedInStatus: state,
+});
+
+export default connect(mapStateToProps)(Dashboard);
