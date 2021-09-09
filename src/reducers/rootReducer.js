@@ -1,18 +1,15 @@
 const initialState = {
   loggedInStatus: 'NOT_LOGGED_IN',
-  user: {},
+  user: [],
 };
 
-const rootReducer = (state = initialState, action) => {
+const loginReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'LOGIN': {
-      console.log('this is login action');
-      // const newState = { ...state, meals: [...state.meals, ...action.payload] };
-      return state;
-    }
+    case 'LOGIN':
+      return { ...state, loggedInStatus: 'LOGGED_IN' };
     default:
       return state;
   }
 };
 
-export default rootReducer;
+export default loginReducer;

@@ -1,12 +1,6 @@
-export const LOGIN = () => ({
+const LOGIN = (data) => ({
   type: 'LOGIN',
-  // payload: id,
-  meta: {
-    type: 'api',
-  },
+  payload: data,
 });
 
-export const CHANGE_FILTER = (filter) => ({
-  type: 'CHANGE_FILTER',
-  payload: filter,
-});
+export default LOGIN;
