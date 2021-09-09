@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import Dashboard from './components/Dashboard';
 import Home from './components/Home';
 import Navbar from './components/Navbar';
+import Hotels from './components/Hotels';
 
 function App(props) {
   const { storestate } = props;
@@ -14,6 +15,7 @@ function App(props) {
       {storestate[0] === 'LOGGED_IN' ? <Navbar /> : <h1>PLEASE OUT</h1>}
       <Switch>
         <Route exact path="/" component={Home} />
+        <Route exact path="/hotels" component={Hotels} />
         <Route exact path="/dashboard" component={Dashboard} />
       </Switch>
     </BrowserRouter>

@@ -9,7 +9,7 @@ import Login from './auth/Login';
 
 function Home(props) {
   const { storestate } = props;
-  // console.log(props);
+  console.log(props);
   console.log(storestate);
 
   const handleSuccessfulAuth = (data) => {
@@ -17,7 +17,7 @@ function Home(props) {
     const { LOGIN } = props;
     LOGIN(data.user);
     // console.log(data.user);
-    props.history.push('/dashboard');
+    props.history.push('/hotels');
   };
 
   const handleLogout = () => {
@@ -32,7 +32,7 @@ function Home(props) {
         console.log('logout error ', err);
       });
     // console.log(data.user);
-    props.history.push('/');
+    props.history.push('/hotels');
   };
 
   const checkLoginStatus = () => {

@@ -3,12 +3,22 @@ import { connect } from 'react-redux';
 // import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import Registration from './auth/Registration';
 import { LOGIN, SIGNOUT, LOGOUT } from '../actions';
+import Login from './auth/Login';
 
-function Dashboard(props) {
-  const { loggedInStatus } = props;
-  console.log(props);
-  console.log(loggedInStatus);
+function Home(props) {
+  const { storestate } = props;
+  // console.log(props);
+  console.log(storestate);
+
+  const handleSuccessfulAuth = (data) => {
+    // redirect to dashboard
+    const { LOGIN } = props;
+    LOGIN(data.user);
+    // console.log(data.user);
+    props.history.push('/hotels');
+  };
 
   const handleLogout = () => {
     // redirect to dashboard
@@ -21,7 +31,8 @@ function Dashboard(props) {
       .catch((err) => {
         console.log('logout error ', err);
       });
-    // props.history.push('/hotels');
+    // console.log(data.user);
+    props.history.push('/');
   };
 
   const checkLoginStatus = () => {
@@ -29,9 +40,9 @@ function Dashboard(props) {
     axios.get('http://localhost:3001/logged_in', { withCredentials: true })
       .then((res) => {
         console.log('logged in? ', res);
-        if (res.data.logged_in && loggedInStatus[0] === 'NOT_LOGGED_IN') {
+        if (res.data.logged_in && storestate[0] === 'NOT_LOGGED_IN') {
           LOGIN(res.data.user);
-        } else if (!res.data.logged_in && loggedInStatus[0] === 'LOGGED_IN') {
+        } else if (!res.data.logged_in && storestate[0] === 'LOGGED_IN') {
           SIGNOUT();
         }
       })
@@ -46,33 +57,34 @@ function Dashboard(props) {
 
   return (
     <div>
-      <h1>Dashboard</h1>
+      <h1>Home</h1>
       <h1>
         Status:
-        {loggedInStatus}
+        {storestate}
       </h1>
-      <button type="button" onClick={() => props.history.goBack()}>Go Back</button>
       <button type="button" onClick={handleLogout}>Logout</button>
+      <Registration handleSuccessfulAuth={handleSuccessfulAuth} />
+      <Login handleSuccessfulAuth={handleSuccessfulAuth} />
     </div>
   );
 }
 
-Dashboard.propTypes = {
-  loggedInStatus: PropTypes.objectOf(PropTypes.any).isRequired,
-  LOGOUT: PropTypes.func.isRequired,
+Home.propTypes = {
+  storestate: PropTypes.objectOf(PropTypes.any).isRequired,
+  history: PropTypes.objectOf(PropTypes.any).isRequired,
   LOGIN: PropTypes.func.isRequired,
   SIGNOUT: PropTypes.func.isRequired,
-  history: PropTypes.objectOf(PropTypes.any).isRequired,
+  LOGOUT: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  loggedInStatus: state,
+  storestate: state,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  LOGOUT: () => { dispatch(LOGOUT()); },
   LOGIN: (data) => { dispatch(LOGIN(data)); },
   SIGNOUT: () => { dispatch(SIGNOUT()); },
+  LOGOUT: () => { dispatch(LOGOUT()); },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
