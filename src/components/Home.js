@@ -6,15 +6,15 @@ import Registration from './auth/Registration';
 import LOGIN from '../actions';
 
 function Home(props) {
-  const { loggedInStatus } = props;
-  console.log(props);
-  console.log(loggedInStatus);
+  const { storestate } = props;
+  // console.log(props);
+  console.log(storestate);
 
   const handleSuccessfulAuth = (data) => {
     // redirect to dashboard
     const { LOGIN } = props;
-    LOGIN(data);
-    console.log(data);
+    LOGIN(data.user);
+    // console.log(data.user);
     props.history.push('/dashboard');
   };
 
@@ -23,7 +23,7 @@ function Home(props) {
       <h1>Home</h1>
       <h1>
         Status:
-        {loggedInStatus}
+        {storestate}
       </h1>
       <Registration handleSuccessfulAuth={handleSuccessfulAuth} />
     </div>
@@ -31,13 +31,13 @@ function Home(props) {
 }
 
 Home.propTypes = {
-  loggedInStatus: PropTypes.objectOf(PropTypes.any).isRequired,
+  storestate: PropTypes.objectOf(PropTypes.any).isRequired,
   history: PropTypes.objectOf(PropTypes.any).isRequired,
   LOGIN: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  loggedInStatus: state,
+  storestate: state,
 });
 
 const mapDispatchToProps = (dispatch) => ({

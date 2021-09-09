@@ -94,7 +94,7 @@ function Registration(props) {
     },
     { withCredentials: true })
       .then((res) => {
-        console.log('registration res ', res);
+        // console.log('registration res ', res);
         // const { handleSuccessfulAuth } = this.state;
         if (res.data.status === 'created') {
           handleSuccessfulAuth(res.data);
