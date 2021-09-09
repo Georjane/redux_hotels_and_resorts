@@ -35,6 +35,23 @@ function Home(props) {
     props.history.push('/hotels');
   };
 
+  const handleaddfav = () => {
+    // redirect to dashboard
+    axios.post('http://localhost:3001/favorites', {
+      user_id: '17',
+      hotel_id: '2',
+    },
+    { withCredentials: true })
+      .then((res) => {
+        console.log('fav created res ', res);
+      })
+      .catch((err) => {
+        console.log('fav error ', err);
+      });
+    // console.log(data.user);
+    props.history.push('/hotels');
+  };
+
   const checkLoginStatus = () => {
     const { LOGIN, SIGNOUT } = props;
     axios.get('http://localhost:3001/logged_in', { withCredentials: true })
@@ -63,6 +80,7 @@ function Home(props) {
         {storestate}
       </h1>
       <button type="button" onClick={handleLogout}>Logout</button>
+      <button type="button" onClick={handleaddfav}>Add favorite</button>
       <Registration handleSuccessfulAuth={handleSuccessfulAuth} />
       <Login handleSuccessfulAuth={handleSuccessfulAuth} />
     </div>
