@@ -2,20 +2,22 @@ import React, { useState, useEffect } from 'react';
 
 import UserService from '../services/user.service';
 
-const Home = () => {
+const Favorites = () => {
   const [content, setContent] = useState('');
 
   useEffect(() => {
-    UserService.getHotels().then(
+    UserService.getFavorites().then(
       (response) => {
         setContent(response.data);
       },
       (error) => {
-        const _content = (error.response && error.response.data)
+        const content = (error.response
+            && error.response.data
+            && error.response.data.message)
           || error.message
           || error.toString();
 
-        setContent(_content);
+        setContent(content);
       },
     );
   }, []);
@@ -29,4 +31,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Favorites;
