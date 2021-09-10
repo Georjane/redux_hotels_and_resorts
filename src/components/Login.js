@@ -1,12 +1,12 @@
-import React, { useState, useRef } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState, useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import Form from 'react-validation/build/form';
+import Input from 'react-validation/build/input';
+import CheckButton from 'react-validation/build/button';
 
-import Form from "react-validation/build/form";
-import Input from "react-validation/build/input";
-import CheckButton from "react-validation/build/button";
-
-import { login } from "../actions/auth";
+import { login } from '../actions/auth';
 
 const required = (value) => {
   if (!value) {
@@ -16,18 +16,19 @@ const required = (value) => {
       </div>
     );
   }
+  return <span />;
 };
 
 const Login = (props) => {
   const form = useRef();
   const checkBtn = useRef();
 
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const { isLoggedIn } = useSelector(state => state.auth);
-  const { message } = useSelector(state => state.message);
+  const { isLoggedIn } = useSelector((state) => state.auth);
+  const { message } = useSelector((state) => state.message);
 
   const dispatch = useDispatch();
 
@@ -48,10 +49,10 @@ const Login = (props) => {
 
     form.current.validateAll();
 
-    if (checkBtn.current.context._errors.length === 0) {
+    if (checkBtn.current.context.errors.length === 0) {
       dispatch(login(username, password))
         .then(() => {
-          props.history.push("/profile");
+          props.history.push('/hotels');
           window.location.reload();
         })
         .catch(() => {
@@ -63,7 +64,7 @@ const Login = (props) => {
   };
 
   if (isLoggedIn) {
-    return <Redirect to="/profile" />;
+    return <Redirect to="/hotels" />;
   }
 
   return (
@@ -77,33 +78,35 @@ const Login = (props) => {
 
         <Form onSubmit={handleLogin} ref={form}>
           <div className="form-group">
-            <label htmlFor="username">Username</label>
+            {/* <label htmlFor="username">Username</label> */}
             <Input
               type="text"
               className="form-control"
               name="username"
               value={username}
+              placeholder="Username"
               onChange={onChangeUsername}
               validations={[required]}
             />
           </div>
 
           <div className="form-group">
-            <label htmlFor="password">Password</label>
+            {/* <label htmlFor="password">Password</label> */}
             <Input
               type="password"
               className="form-control"
               name="password"
               value={password}
+              placeholder="Password"
               onChange={onChangePassword}
               validations={[required]}
             />
           </div>
 
           <div className="form-group">
-            <button className="btn btn-primary btn-block" disabled={loading}>
+            <button type="button" className="btn btn-primary btn-block" disabled={loading}>
               {loading && (
-                <span className="spinner-border spinner-border-sm"></span>
+                <span className="spinner-border spinner-border-sm" />
               )}
               <span>Login</span>
             </button>
@@ -116,11 +119,15 @@ const Login = (props) => {
               </div>
             </div>
           )}
-          <CheckButton style={{ display: "none" }} ref={checkBtn} />
+          <CheckButton style={{ display: 'none' }} ref={checkBtn} />
         </Form>
       </div>
     </div>
   );
+};
+
+Login.propTypes = {
+  history: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
 export default Login;
