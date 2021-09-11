@@ -1,13 +1,16 @@
 import React, { useState, useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector, connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Form from 'react-validation/build/form';
 import Input from 'react-validation/build/input';
 import CheckButton from 'react-validation/build/button';
 import { isEmail } from 'validator';
-
-import { register } from '../actions/auth';
-
+import {
+  SIGNUP,
+} from '../actions/auth';
+// import { register } from '../actions/auth';
+// import Login from '../components/Login';
+// import PropTypes from 'prop-types';
 const required = (value) => {
   if (!value) {
     return (
@@ -18,7 +21,6 @@ const required = (value) => {
   }
   return <span />;
 };
-
 const validEmail = (value) => {
   if (!isEmail(value)) {
     return (
@@ -52,7 +54,7 @@ const vpassword = (value) => {
   return <span />;
 };
 
-const Register = (props) => {
+const LandingPage = (props) => {
   const form = useRef();
   const checkBtn = useRef();
 
@@ -63,7 +65,7 @@ const Register = (props) => {
   const [successful, setSuccessful] = useState(false);
 
   const { message } = useSelector((state) => state.message);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const onChangeUsername = (e) => {
     const username = e.target.value;
@@ -87,36 +89,42 @@ const Register = (props) => {
 
   const handleRegister = (e) => {
     e.preventDefault();
-
+    console.log('clicked');
     setSuccessful(false);
-
+    const { SIGNUP } = props;
+    SIGNUP('add');
     form.current.validateAll();
-
+    console.log('succesful regisyter  from dispach landx pag now render home page');
+    props.history.push('/home');
+    window.location.reload();
     // if (checkBtn.current.context.errors.length === 0) {
-    dispatch(register(username, email, password))
-      .then(() => {
-        console.log('2222 succesful regisyter  from dispach landx pag now render home page');
-        setSuccessful(true);
-        props.history.push('/home');
-        window.location.reload();
-      })
-      .catch(() => {
-        setSuccessful(false);
-      });
-    // }
+    // dispatch(register(username, email, password))
+    //   .then(() => {
+    //     console.log('succesful regisyter  from dispach landx pag now render home page');
+    //     setSuccessful(true);
+    //     props.history.push('/home');
+    //     window.location.reload();
+    //   })
+    //   .catch(() => {
+    //     setSuccessful(false);
+    //   });
+    // // }
   };
 
   return (
-    <div className="col-md-12">
-      <div className="card card-container">
-        <img
-          src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-          alt="profile-img"
-          className="profile-img-card"
-        />
+    <div>
+      <h1>This is my landing page</h1>
+      <div className="col-md-12">
+        {/* <Login /> */}
+        <div className="card card-container">
+          <img
+            src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+            alt="profile-img"
+            className="profile-img-card"
+          />
 
-        <Form onSubmit={handleRegister} ref={form}>
-          {!successful && (
+          <Form onSubmit={handleRegister} ref={form}>
+            {!successful && (
             <div>
               <div className="form-group">
                 {/* <label htmlFor="username">Username</label> */}
@@ -169,25 +177,37 @@ const Register = (props) => {
                 />
               </div>
               <div className="form-group">
-                <button type="submit" className="btn btn-primary btn-block">Sign Up</button>
+                <button type="submit" className="btn btn-primary btn-block">Sign Upp</button>
               </div>
             </div>
-          )}
+            )}
 
-          {message && (
+            {message && (
             <div className="form-group">
               <div className={successful ? 'alert alert-success' : 'alert alert-danger'} role="alert">
                 {message}
               </div>
             </div>
-          )}
-          <CheckButton style={{ display: 'none' }} ref={checkBtn} />
-        </Form>
+            )}
+            <CheckButton style={{ display: 'none' }} ref={checkBtn} />
+          </Form>
+        </div>
       </div>
     </div>
+
   );
 };
-Register.propTypes = {
+
+LandingPage.propTypes = {
   history: PropTypes.objectOf(PropTypes.any).isRequired,
+  SIGNUP: PropTypes.func.isRequired,
 };
-export default Register;
+const mapStateToProps = (state) => ({
+  mealsInfo: state,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  SIGNUP: (add) => { dispatch(SIGNUP(add)); },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(LandingPage);

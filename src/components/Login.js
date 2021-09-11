@@ -53,7 +53,7 @@ const Login = (props) => {
     dispatch(login(username, password))
       .then(() => {
         console.log('finish login');
-        props.history.push('/hotels');
+        props.history.push('/home');
         window.location.reload();
       })
       .catch(() => {

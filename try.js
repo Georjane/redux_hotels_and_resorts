@@ -1,1 +1,1 @@
-console.log(JSON.stringify({'jane': "jj"}));
+console.log(JSON.stringify({ jane: 'jj' }));

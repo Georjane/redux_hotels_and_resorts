@@ -1,59 +1,18 @@
-import {
-  REGISTER_SUCCESS,
-  REGISTER_FAIL,
-  LOGIN_SUCCESS,
-  LOGIN_FAIL,
-  LOGOUT,
-} from '../actions/types';
+const initialState = {
+  isLoggedIn: false,
+  user: {},
+};
 
-const user = JSON.parse(localStorage.getItem('user'));
-
-const initialState = user
-  ? { isLoggedIn: true, user }
-  : { isLoggedIn: false, user: null };
-
-//   the state I want which is not working
-//   const initialState = {
-//     isLoggedIn: true,
-//     user: {}
-//   };
-
-// the state that works
-//   const initialState = [];
-
-export default function (state = initialState, action) {
-  const { type, payload } = action;
-
-  switch (type) {
-    case REGISTER_SUCCESS:
-      return {
-        ...state,
-        isLoggedIn: false,
-      };
-    case REGISTER_FAIL:
-      return {
-        ...state,
-        isLoggedIn: false,
-      };
-    case LOGIN_SUCCESS:
-      return {
-        ...state,
-        isLoggedIn: true,
-        user: payload.user,
-      };
-    case LOGIN_FAIL:
-      return {
-        ...state,
-        isLoggedIn: false,
-        user: null,
-      };
-    case LOGOUT:
-      return {
-        ...state,
-        isLoggedIn: false,
-        user: null,
-      };
+const rootReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case 'SIGNUP': {
+      console.log('rooot');
+      const newState = { ...state, isLoggedIn: true, user: [...state.user, ...action.payload] };
+      return newState;
+    }
     default:
       return state;
   }
-}
+};
+
+export default rootReducer;

@@ -17,8 +17,15 @@ import AuthService from '../services/auth.service';
 export const register = (x, y, z, i) => (dispatch) => AuthService.register(x, y, z, i)
   .then(
     (response) => {
+      console.log('this is res from dispatch register actions that call api', response);
       dispatch({
         type: REGISTER_SUCCESS,
+        payload: { user: response.data.user },
+      });
+
+      dispatch({
+        type: LOGIN_SUCCESS,
+        payload: { user: response.data.user },
       });
 
       dispatch({
@@ -85,3 +92,23 @@ export const logout = () => (dispatch) => {
     type: LOGOUT,
   });
 };
+
+export const TEST = () => ({
+  type: 'TEST',
+  meta: {
+    type: 'api',
+  },
+});
+
+export const SIGNUP = (add) => ({
+  type: 'SIGNUP',
+  payload: add,
+  meta: {
+    type: 'api',
+  },
+});
+
+export const CHANGE_FILTER = (filter) => ({
+  type: 'CHANGE_FILTER',
+  payload: filter,
+});

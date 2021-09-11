@@ -31,6 +31,7 @@ const login = (username, email, password) => axios
 const logout = () => axios.delete(`${API_URL}logout`,
   { withCredentials: true })
   .then((res) => {
+    console.log('yes logged out');
     localStorage.removeItem('user');
     return res.data;
   });
