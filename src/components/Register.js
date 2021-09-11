@@ -92,15 +92,15 @@ const Register = () => {
 
     form.current.validateAll();
 
-    if (checkBtn.current.context.errors.length === 0) {
-      dispatch(register(username, email, password))
-        .then(() => {
-          setSuccessful(true);
-        })
-        .catch(() => {
-          setSuccessful(false);
-        });
-    }
+    // if (checkBtn.current.context.errors.length === 0) {
+    dispatch(register(username, email, password))
+      .then(() => {
+        setSuccessful(true);
+      })
+      .catch(() => {
+        setSuccessful(false);
+      });
+    // }
   };
 
   return (
@@ -166,7 +166,7 @@ const Register = () => {
                 />
               </div>
               <div className="form-group">
-                <button type="button" className="btn btn-primary btn-block">Sign Up</button>
+                <button type="submit" className="btn btn-primary btn-block">Sign Up</button>
               </div>
             </div>
           )}

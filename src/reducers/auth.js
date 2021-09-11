@@ -12,6 +12,15 @@ const initialState = user
   ? { isLoggedIn: true, user }
   : { isLoggedIn: false, user: null };
 
+//   the state I want which is not working
+//   const initialState = {
+//     isLoggedIn: true,
+//     user: {}
+//   };
+
+// the state that works
+//   const initialState = [];
+
 export default function (state = initialState, action) {
   const { type, payload } = action;
 

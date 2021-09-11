@@ -49,18 +49,19 @@ const Login = (props) => {
 
     form.current.validateAll();
 
-    if (checkBtn.current.context.errors.length === 0) {
-      dispatch(login(username, password))
-        .then(() => {
-          props.history.push('/hotels');
-          window.location.reload();
-        })
-        .catch(() => {
-          setLoading(false);
-        });
-    } else {
-      setLoading(false);
-    }
+    // if (checkBtn.current.context.errors.length === 0) {
+    dispatch(login(username, password))
+      .then(() => {
+        console.log('finish login');
+        props.history.push('/hotels');
+        window.location.reload();
+      })
+      .catch(() => {
+        setLoading(false);
+      });
+    // } else {
+    //   setLoading(false);
+    // }
   };
 
   if (isLoggedIn) {
@@ -104,7 +105,7 @@ const Login = (props) => {
           </div>
 
           <div className="form-group">
-            <button type="button" className="btn btn-primary btn-block" disabled={loading}>
+            <button type="submit" className="btn btn-primary btn-block" disabled={loading}>
               {loading && (
                 <span className="spinner-border spinner-border-sm" />
               )}
