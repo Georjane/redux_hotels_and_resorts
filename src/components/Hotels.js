@@ -37,6 +37,7 @@ function Hotels(props) {
           userInfo: {
             id,
             username,
+            hotels,
           },
         }}
       >

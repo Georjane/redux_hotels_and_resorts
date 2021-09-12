@@ -37,6 +37,18 @@ const apiMiddleware = (store) => (next) => (action) => {
       });
   }
 
+  if (action.type === 'LOGOUT') {
+    axios.delete('http://localhost:3001/logout', {
+      withCredentials: true,
+    })
+      .then((data) => {
+        console.log(data);
+        const newActions = { ...action, payload: data };
+        delete newActions.meta;
+        return store.dispatch(newActions);
+      });
+  }
+
   if (action.type === 'ADDFAV') {
     console.log(action.payload);
     console.log(action.payload.fav.hotel_id);

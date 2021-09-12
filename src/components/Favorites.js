@@ -9,17 +9,19 @@ function Favorites(props) {
   if (userInfo === undefined) {
     return <Redirect to="/login" />;
   }
-  const { id, username } = userInfo;
+  const { id, username, hotels } = userInfo;
   const [favorites, setFavorites] = useState([]);
 
   useEffect(() => {
     axios.get('http://localhost:3001/favorites', { withCredentials: true })
       .then((res) => {
         const myfavorites = [];
-        res.data.forEach((element) => {
-          if (element.user_id === id) {
-            myfavorites.push(element);
-          }
+        res.data.forEach((fav) => {
+          hotels.forEach((hotel) => {
+            if (fav.user_id === id && fav.hotel_id === hotel.id) {
+              myfavorites.push(hotel);
+            }
+          });
         });
         setFavorites(myfavorites);
       })

@@ -39,6 +39,16 @@ const rootReducer = (state = initialState, action) => {
       const newState = { ...state, isLoggedIn: false, loginErr: true };
       return newState;
     }
+    case 'LOGOUT': {
+      console.log(action.payload.status);
+      if (action.payload.status === 200) {
+        const newState = {
+          ...state, isLoggedIn: false, hasSignedUp: true, users: [],
+        };
+        return newState;
+      }
+      return state;
+    }
     default:
       return state;
   }

@@ -14,6 +14,15 @@ export const LOGIN = (user) => ({
   },
 });
 
+export const LOGOUT = () => ({
+  type: 'LOGOUT',
+  payload: {
+    status: 404,
+  },
+  meta: {
+    type: 'api',
+  },
+});
 export const ADDFAV = (favourite) => ({
   type: 'ADDFAV',
   payload: favourite,
