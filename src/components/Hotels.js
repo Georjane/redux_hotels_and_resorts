@@ -5,12 +5,13 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 function Hotels(props) {
-  const { user } = props;
+  const { user, handleAddFavs } = props;
   const { id, username } = user[0];
   const [hotels, setHotels] = useState([]);
 
   const handleAddFavorite = (e) => {
     e.preventDefault();
+    handleAddFavs(e.target.name);
     console.log('add fav', e.target.name, id);
   };
 
@@ -70,6 +71,7 @@ function Hotels(props) {
 Hotels.propTypes = {
   user: PropTypes.objectOf(PropTypes.any).isRequired,
   id: PropTypes.objectOf(PropTypes.any).isRequired,
+  handleAddFavs: PropTypes.func.isRequired,
 };
 
 export default Hotels;
