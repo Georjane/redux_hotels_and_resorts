@@ -1,26 +1,23 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 
-function Favorites() {
+function Favorites(props) {
+  const { location } = props;
+  const { userInfo } = location;
+  const { id, username } = userInfo;
   const [favorites, setFavorites] = useState([]);
 
   useEffect(() => {
     axios.get('http://localhost:3001/favorites', { withCredentials: true })
       .then((res) => {
-        console.log('favourites ', res);
-        const mine = [];
+        const myfavorites = [];
         res.data.forEach((element) => {
-          console.log(element.user_id);
-          if (element.user_id === 16) {
-            mine.push(element);
+          if (element.user_id === id) {
+            myfavorites.push(element);
           }
         });
-
-        // if (user_id === 1) {
-        //   res.data.push
-        // }
-        setFavorites(mine);
-        // console.log(setFavorites);
+        setFavorites(myfavorites);
       })
       .catch((err) => {
         console.log('favourites ', err);
@@ -29,7 +26,10 @@ function Favorites() {
 
   return (
     <div className="favorites">
-      <h1>Favorites</h1>
+      <h1>
+        {username}
+        &apos;`s Favorites
+      </h1>
       {favorites.map((favorite) => (
         <div key={favorite.id}>
           <h2>{favorite.title}</h2>
@@ -40,5 +40,7 @@ function Favorites() {
     </div>
   );
 }
-
+Favorites.propTypes = {
+  location: PropTypes.objectOf(PropTypes.any).isRequired,
+};
 export default Favorites;

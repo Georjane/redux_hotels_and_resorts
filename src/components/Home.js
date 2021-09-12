@@ -23,9 +23,9 @@ function Home(props) {
   }
   return (
     <div>
-      <h1>Home Sweet Home</h1>
+      <h1>Home SweetHome</h1>
       <h1>in</h1>
-      <Hotels />
+      <Hotels user={state.users} />
     </div>
   );
 }
