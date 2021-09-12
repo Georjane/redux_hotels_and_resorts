@@ -13,3 +13,11 @@ export const LOGIN = (user) => ({
     type: 'api',
   },
 });
+
+export const ADDFAV = (favourite) => ({
+  type: 'ADDFAV',
+  payload: favourite,
+  meta: {
+    type: 'api',
+  },
+});

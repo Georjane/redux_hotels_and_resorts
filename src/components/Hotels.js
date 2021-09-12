@@ -11,7 +11,11 @@ function Hotels(props) {
 
   const handleAddFavorite = (e) => {
     e.preventDefault();
-    handleAddFavs(e.target.name);
+    const fav = {
+      user_id: id,
+      hotel_id: e.target.name,
+    };
+    handleAddFavs(fav);
     console.log('add fav', e.target.name, id);
   };
 

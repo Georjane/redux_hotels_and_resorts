@@ -1,10 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-// import Login from './Login';
+// import ADDFAV from './ADDFAV';
 import { Redirect } from 'react-router';
 import App from './App';
 import Hotels from './Hotels';
+import { ADDFAV } from '../actions';
 
 function Home(props) {
   const { state } = props;
@@ -14,7 +15,8 @@ function Home(props) {
       <Redirect to="/login" />
     );
   }
-  if (!hasSignedUp) {
+  if (hasSignedUp === false) {
+    console.log('here');
     return (
       <div>
         <App />
@@ -26,6 +28,10 @@ function Home(props) {
     console.log('fav==================');
     console.log(fav);
     console.log('fav==================');
+    const { ADDFAV } = props;
+    ADDFAV({
+      fav,
+    });
   };
 
   return (
@@ -38,10 +44,15 @@ function Home(props) {
 }
 Home.propTypes = {
   state: PropTypes.objectOf(PropTypes.any).isRequired,
+  ADDFAV: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   state,
 });
 
-export default connect(mapStateToProps)(Home);
+const mapDispatchToProps = (dispatch) => ({
+  ADDFAV: (fav) => { dispatch(ADDFAV(fav)); },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
