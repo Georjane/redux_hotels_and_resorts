@@ -1,10 +1,14 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import { Redirect } from 'react-router';
 
 function Favorites(props) {
   const { location } = props;
   const { userInfo } = location;
+  if (userInfo === undefined) {
+    return <Redirect to="/login" />;
+  }
   const { id, username } = userInfo;
   const [favorites, setFavorites] = useState([]);
 
