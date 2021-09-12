@@ -37,6 +37,7 @@ function App(props) {
     SIGNUP({
       username, email, password, passwordConfirmation,
     });
+    props.history.push('./home');
       <Redirect to="/home" />;
   };
 
@@ -54,7 +55,7 @@ function App(props) {
   );
 }
 App.propTypes = {
-  // state: PropTypes.objectOf(PropTypes.any).isRequired,
+  history: PropTypes.objectOf(PropTypes.any).isRequired,
   SIGNUP: PropTypes.func.isRequired,
 };
 

@@ -9,7 +9,7 @@ import { ADDFAV, LOGOUT } from '../actions';
 
 function Home(props) {
   const { state } = props;
-  console.log(state.users[0].id);
+  // console.log(state.users[0].id);
   const { isLoggedIn, hasSignedUp } = state;
   if (isLoggedIn === false) {
     return (
@@ -30,7 +30,6 @@ function Home(props) {
       <Redirect to="/login" />;
   };
   sessionStorage.setItem('user_id', state.users[0].id);
-  console.log(sessionStorage.getItem('user_id'));
   const handleAddFavs = (fav) => {
     console.log('fav==================');
     console.log(fav);
