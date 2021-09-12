@@ -11,7 +11,6 @@ function Favorites(props) {
   }
   const { id, username, hotels } = userInfo;
   const [favorites, setFavorites] = useState([]);
-
   useEffect(() => {
     axios.get('http://localhost:3001/favorites', { withCredentials: true })
       .then((res) => {
@@ -36,6 +35,20 @@ function Favorites(props) {
         {username}
         &apos;`s Favorites
       </h1>
+      <div className="details">
+        <img className="detailsimg" alt="lolo" src="images/img4.jpg" />
+        <div className="detailsdiv">
+          <h2>Dine Around at Address Hotels + Resorts</h2>
+          <p>
+            Get up to 2 complimentary
+            tickets to the world’s greatest
+            show when you book with us this September.
+          </p>
+          <span>01 October – 31 March 2022</span>
+          <span>Multiple Location </span>
+          <span>stay@addresshotels.com</span>
+        </div>
+      </div>
       {favorites.map((favorite) => (
         <div key={favorite.id}>
           <h2>{favorite.title}</h2>

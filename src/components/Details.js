@@ -25,6 +25,20 @@ function Details(props) {
   return (
     <div className="Hotels">
       <h1>Each Hotel Details</h1>
+      <div className="details">
+        <img className="detailsimg" alt="lolo" src="images/img4.jpg" />
+        <div className="detailsdiv">
+          <h2>Dine Around at Address Hotels + Resorts</h2>
+          <p>
+            Get up to 2 complimentary
+            tickets to the world’s greatest
+            show when you book with us this September.
+          </p>
+          <span>01 October – 31 March 2022</span>
+          <span>Multiple Location </span>
+          <span>stay@addresshotels.com</span>
+        </div>
+      </div>
       <div key={hotel.id}>
         <h2>{hotel.title}</h2>
         <p>{hotel.description}</p>
