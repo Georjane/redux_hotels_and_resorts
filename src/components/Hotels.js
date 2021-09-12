@@ -15,8 +15,6 @@ function Hotels() {
   useEffect(() => {
     axios.get('http://localhost:3001/hotels', { withCredentials: true })
       .then((res) => {
-        console.log('hotels ', res);
-        console.log('hotels ', res.data);
         // const jane = [];
         // res.data.forEach((element) => {
         //   jane.push(element.image_url);
