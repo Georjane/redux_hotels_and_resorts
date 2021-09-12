@@ -9,7 +9,6 @@ import Hotels from './Hotels';
 function Home(props) {
   const { state } = props;
   const { isLoggedIn, hasSignedUp } = state;
-
   if (isLoggedIn === false) {
     return (
       <Redirect to="/login" />

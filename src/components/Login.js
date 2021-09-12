@@ -9,6 +9,7 @@ function Login(props) {
   const { isLoggedIn, hasSignedUp } = state;
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  console.log(state);
   const handleOnchangeUsername = (e) => {
     e.preventDefault();
     setUsername(e.target.value);

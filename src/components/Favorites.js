@@ -8,7 +8,19 @@ function Favorites() {
     axios.get('http://localhost:3001/favorites', { withCredentials: true })
       .then((res) => {
         console.log('favourites ', res);
-        console.log(setFavorites);
+        const mine = [];
+        res.data.forEach((element) => {
+          console.log(element.user_id);
+          if (element.user_id === 16) {
+            mine.push(element);
+          }
+        });
+
+        // if (user_id === 1) {
+        //   res.data.push
+        // }
+        setFavorites(mine);
+        // console.log(setFavorites);
       })
       .catch((err) => {
         console.log('favourites ', err);
