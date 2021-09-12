@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import { Redirect } from 'react-router';
 import { SIGNUP } from '../actions';
 
 function App(props) {
@@ -8,8 +9,8 @@ function App(props) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
-  // const { state } = props;
-  // console.log(state);
+  const { state } = props;
+  const { isLoggedIn } = state;
 
   const handleOnchangeUsername = (e) => {
     e.preventDefault();
@@ -34,27 +35,28 @@ function App(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     const { SIGNUP } = props;
-    console.log(username);
     SIGNUP({
       username, email, password, passwordConfirmation,
     });
+      <Redirect to="/home" />;
+      console.log(isLoggedIn);
   };
 
   return (
     <div>
       <h1>Please Signup</h1>
       <form onSubmit={handleSubmit}>
-        <input onChange={handleOnchangeUsername} type="text" name="username" placeholder="Username" />
-        <input onChange={handleOnchangeEmail} type="email" name="email" placeholder="Email" />
-        <input onChange={handleOnchangePassword} type="password" name="password" placeholder="Password" />
-        <input onChange={handleOnchangePasswordConfirmation} type="password" name="passwordConfirmation" placeholder="Password Confirmation" />
-        <button type="submit">Submit</button>
+        <input onChange={handleOnchangeUsername} type="text" name="username" placeholder="Username" required />
+        <input onChange={handleOnchangeEmail} type="email" name="email" placeholder="Email" required />
+        <input onChange={handleOnchangePassword} type="password" name="password" placeholder="Password" required />
+        <input onChange={handleOnchangePasswordConfirmation} type="password" name="passwordConfirmation" placeholder="Password Confirmation" required />
+        <button type="submit">Signup</button>
       </form>
     </div>
   );
 }
 App.propTypes = {
-  // state: PropTypes.objectOf(PropTypes.any).isRequired,
+  state: PropTypes.objectOf(PropTypes.any).isRequired,
   SIGNUP: PropTypes.func.isRequired,
 };
 

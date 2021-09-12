@@ -7,10 +7,13 @@ const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'SIGNUP': {
       if (action.payload.status === 'created') {
-        const newState = { ...state, isLoggedIn: true, users: [action.payload.user] };
-        return newState;
+        const nS = {
+          ...state, isLoggedIn: true, hasSignedUp: true, users: [action.payload.user],
+        };
+        return nS;
       }
-      return state;
+      const newState = { ...state, isLoggedIn: false, hasSignedUp: false };
+      return newState;
     }
     default:
       return state;
