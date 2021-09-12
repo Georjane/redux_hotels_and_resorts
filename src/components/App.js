@@ -9,8 +9,7 @@ function App(props) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
-  const { state } = props;
-  const { isLoggedIn } = state;
+  // const { state } = props;
 
   const handleOnchangeUsername = (e) => {
     e.preventDefault();
@@ -39,7 +38,6 @@ function App(props) {
       username, email, password, passwordConfirmation,
     });
       <Redirect to="/home" />;
-      console.log(isLoggedIn);
   };
 
   return (
@@ -56,7 +54,7 @@ function App(props) {
   );
 }
 App.propTypes = {
-  state: PropTypes.objectOf(PropTypes.any).isRequired,
+  // state: PropTypes.objectOf(PropTypes.any).isRequired,
   SIGNUP: PropTypes.func.isRequired,
 };
 

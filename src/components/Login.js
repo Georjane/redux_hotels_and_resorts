@@ -3,13 +3,13 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router';
 import PropTypes from 'prop-types';
 import App from './App';
+import { LOGIN } from '../actions';
 
 function Login(props) {
   const { state } = props;
   const { isLoggedIn, hasSignedUp } = state;
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  console.log(state);
   const handleOnchangeUsername = (e) => {
     e.preventDefault();
     setUsername(e.target.value);
@@ -22,19 +22,17 @@ function Login(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(username, password);
-    // const { SIGNUP } = props;
-    // SIGNUP({
-    //   username, email, password, passwordConfirmation,
-    // });
+    const { LOGIN } = props;
+    LOGIN({
+      username, password,
+    });
       <Redirect to="/home" />;
   };
 
   if (isLoggedIn) {
     return (
       <div>
-        <h1>Login Sweet Login</h1>
-        <h1>in</h1>
+        <Redirect to="/home" />
       </div>
     );
   }
@@ -58,10 +56,15 @@ function Login(props) {
 }
 Login.propTypes = {
   state: PropTypes.objectOf(PropTypes.any).isRequired,
+  LOGIN: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   state,
 });
 
-export default connect(mapStateToProps)(Login);
+const mapDispatchToProps = (dispatch) => ({
+  LOGIN: (username) => { dispatch(LOGIN(username)); },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

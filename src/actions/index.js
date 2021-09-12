@@ -1,14 +1,14 @@
-export const SIGNUP = (username) => ({
+export const SIGNUP = (user) => ({
   type: 'SIGNUP',
-  payload: username,
+  payload: user,
   meta: {
     type: 'api',
   },
 });
 
-export const MEAL_DETAILS = (id) => ({
-  type: 'MEAL_DETAILS',
-  payload: id,
+export const LOGIN = (user) => ({
+  type: 'LOGIN',
+  payload: user,
   meta: {
     type: 'api',
   },
