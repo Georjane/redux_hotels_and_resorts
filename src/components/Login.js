@@ -2,7 +2,10 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import { LOGIN } from '../actions';
+import Navbar from './Navbar';
+import Hero from './Hero';
 
 function Login(props) {
   const { state } = props;
@@ -13,7 +16,18 @@ function Login(props) {
     e.preventDefault();
     setUsername(e.target.value);
   };
-
+  const Button = styled.button`
+  background-color: #E7522B; 
+  padding: 12px 0; 
+  width: 150px;
+  border: none;
+  font-size: larger;
+  border-radius: 30px;
+  color: white;
+  font-weight: bold;
+  font-family: Segoe UI, sans-serif;
+  z-index: 5;
+`;
   const handleOnchangePassword = (e) => {
     e.preventDefault();
     setPassword(e.target.value);
@@ -42,12 +56,24 @@ function Login(props) {
   }
   return (
     <div>
-      <h1>Please Login</h1>
-      <form onSubmit={handleSubmit}>
-        <input onChange={handleOnchangeUsername} type="text" name="username" placeholder="Username" required />
-        <input onChange={handleOnchangePassword} type="password" name="password" placeholder="Password" required />
-        <button type="submit">Logint</button>
-      </form>
+      <div className="gradient" />
+      <Navbar />
+      <Hero />
+      <div className="backlay">
+        <form className="form loginform" onSubmit={handleSubmit}>
+          <h2>Sign in</h2>
+          <span>
+            The hotel guests of Address Beach
+            Resort can now experience an exclusive Floating
+            Breakfast at the worlds highest outdoor infinity pool.
+          </span>
+          <input id="transparent" onChange={handleOnchangeUsername} type="text" name="username" placeholder="Username" required />
+          <input onChange={handleOnchangePassword} type="password" name="password" placeholder="Password" required />
+          <Button type="submit">Log In</Button>
+          <span>Address Hotels & Resorts</span>
+        </form>
+      </div>
+      <div className="formoverlay" />
     </div>
   );
 }
