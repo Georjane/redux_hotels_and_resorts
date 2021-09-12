@@ -78,26 +78,43 @@ function Hotels(props) {
         </div>
       </div>
       {hotels.map((hotel) => (
-        <div key={hotel.id}>
-          <h2>{hotel.title}</h2>
-          <p>{hotel.description}</p>
-          <img src={hotel.image_url} alt={hotel.title} />
-          <button type="button" onClick={handleAddFavorite} name={hotel.id}>Add Fav</button>
-          <Link
-            to={{
-              pathname: '/details',
-              hotel: {
-                id: hotel.id,
-                title: hotel.title,
-                description: hotel.description,
-                image_url: hotel.image_url,
-              },
-            }}
-          >
-            <button className="meal" type="button">
-              Details
-            </button>
-          </Link>
+        <div className="details" key={hotel.id}>
+          <img src={hotel.image_url} className="detailsimg" alt={hotel.title} />
+          <div className="detailsdiv">
+            <h2>
+              {hotel.title}
+              s
+            </h2>
+            <p>{hotel.description}</p>
+            <span>01 October – 31 March 2022</span>
+            <span>Multiple Location </span>
+            <span>stay@addresshotels.com</span>
+            <Button>
+              View Details
+              <Link
+                to={{
+                  pathname: '/details',
+                  hotel: {
+                    id: hotel.id,
+                    title: hotel.title,
+                    description: hotel.description,
+                    image_url: hotel.image_url,
+                  },
+                }}
+              >
+                <button className="meal" type="button">
+                  Details
+                </button>
+              </Link>
+            </Button>
+
+            <span>
+              Add to Favorites
+              <button type="button" onClick={handleAddFavorite} name={hotel.id}>Add Fav</button>
+
+            </span>
+            <i className="fa fa-heart heart" />
+          </div>
         </div>
       ))}
     </div>
