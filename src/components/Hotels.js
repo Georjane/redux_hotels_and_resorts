@@ -42,22 +42,24 @@ function Hotels(props) {
 
   return (
     <div className="Hotels">
-      <Link
-        to={{
-          pathname: '/favorites',
-          userInfo: {
-            id,
-            username,
-            hotels,
-          },
-        }}
-      >
-        <button className="meal" type="button">
-          My Favorites
-        </button>
-      </Link>
+      <div className="favdiv">
+        <h1>View Our Offers</h1>
+        <Link
+          to={{
+            pathname: '/favorites',
+            userInfo: {
+              id,
+              username,
+              hotels,
+            },
+          }}
+        >
+          <button className="favbtn" type="button">
+            Your Favorites
+          </button>
+        </Link>
+      </div>
 
-      <h1>Hotels</h1>
       <div className="details">
         <img className="detailsimg" alt="lolo" src="images/img4.jpg" />
         <div className="detailsdiv">

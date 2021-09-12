@@ -48,8 +48,7 @@ function Home(props) {
       <Navbar />
       <Hero />
       <button type="button" onClick={handleLogout}>Logout</button>
-      <h1>Home SweetHome</h1>
-      <h1>in</h1>
+
       <Hotels user={state.users} handleAddFavs={handleAddFavs} />
     </div>
   );
