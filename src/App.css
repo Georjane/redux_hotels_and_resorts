@@ -7,3 +7,39 @@ color: #E7522B;
 .selector-for-some-widget {
   box-sizing: content-box;
 }
+.gradient {
+  width: 100%;
+  height: 90vh;
+  position: absolute;
+  background-image: linear-gradient(rgba(255, 0, 0, 0), rgba(3, 3, 3, 0.24), rgba(0, 0, 0, 0.767));
+  z-index: 5;
+}
+.bglight {
+  background-color: rgba(255, 0, 0, 0);
+  position: fixed;
+ z-index: 11;
+ color: white;
+ width: 100%;
+ /* position: sticky; */
+}
+.white {
+  color: white;
+}
+.transparent {
+  background-color: rgba(255, 255, 255, 0);
+}
+.landingpage img {
+  height: 90vh;
+}
+
+.landingpage h2 {
+  font-size: 4rem;
+}
+
+.landingpage p {
+  font-size: 1.3rem;
+}
+
+.gradientover {
+  z-index: 20;
+}
