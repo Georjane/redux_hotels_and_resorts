@@ -128,3 +128,28 @@ input {
   background: transparent;
   outline: none;
 }
+
+.details {
+  display: flex;
+  width: 80%;
+  margin: auto;
+  justify-content: space-between;
+}
+
+.detailsimg,
+.detailsdiv {
+  width: 580px;
+}
+
+.detailsdiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+  padding-bottom: 40px;
+}
+
+.heart {
+  color: red;
+  font-size: 36px;
+}

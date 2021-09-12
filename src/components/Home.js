@@ -6,6 +6,8 @@ import { Redirect } from 'react-router';
 import App from './App';
 import Hotels from './Hotels';
 import { ADDFAV, LOGOUT } from '../actions';
+import Navbar from './Navbar';
+import Hero from './Hero';
 
 function Home(props) {
   const { state } = props;
@@ -42,6 +44,9 @@ function Home(props) {
 
   return (
     <div>
+      <div className="gradient" />
+      <Navbar />
+      <Hero />
       <button type="button" onClick={handleLogout}>Logout</button>
       <h1>Home SweetHome</h1>
       <h1>in</h1>

@@ -1,14 +1,25 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-// import Favorites from './Favorites';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 function Hotels(props) {
   const { user, handleAddFavs } = props;
   const { id, username } = user[0];
   const [hotels, setHotels] = useState([]);
-
+  const Button = styled.button`
+  background-color: #E7522B; 
+  padding: 12px 0; 
+  width: 150px;
+  border: none;
+  font-size: larger;
+  border-radius: 30px;
+  color: white;
+  font-weight: bold;
+  font-family: Segoe UI, sans-serif;
+  z-index: 5;
+`;
   const handleAddFavorite = (e) => {
     e.preventDefault();
     const fav = {
@@ -47,6 +58,23 @@ function Hotels(props) {
       </Link>
 
       <h1>Hotels</h1>
+      <div className="details">
+        <img className="detailsimg" alt="lolo" src="images/img4.jpg" />
+        <div className="detailsdiv">
+          <h2>Dine Around at Address Hotels + Resorts</h2>
+          <p>
+            Get up to 2 complimentary
+            tickets to the world’s greatest
+            show when you book with us this September.
+          </p>
+          <span>01 October – 31 March 2022</span>
+          <span>Multiple Location </span>
+          <span>stay@addresshotels.com</span>
+          <Button>View Details</Button>
+          <span>Add to Favorites</span>
+          <i className="fa fa-heart heart" />
+        </div>
+      </div>
       {hotels.map((hotel) => (
         <div key={hotel.id}>
           <h2>{hotel.title}</h2>
