@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router';
 import PropTypes from 'prop-types';
-import App from './App';
 import { LOGIN } from '../actions';
 
 function Login(props) {
@@ -38,9 +37,7 @@ function Login(props) {
   }
   if (hasSignedUp === false) {
     return (
-      <div>
-        <App />
-      </div>
+      <Redirect to="/register" />
     );
   }
   return (

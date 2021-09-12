@@ -22,16 +22,13 @@ const rootReducer = (state = initialState, action) => {
         const newState = {
           ...state, isLoggedIn: true, hasSignedUp: true, users: [action.payload.user],
         };
-        console.log(newState);
         return newState;
       }
       if (action.payload.status === 401) {
         const newState = { ...state, isLoggedIn: false, loginErr: true };
-        console.log(newState);
         return newState;
       }
       const newState = { ...state, isLoggedIn: false, loginErr: true };
-      console.log(newState);
       return newState;
     }
     default:

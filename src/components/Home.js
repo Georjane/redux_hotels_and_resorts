@@ -1,20 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Login from './Login';
+// import Login from './Login';
+import { Redirect } from 'react-router';
 import App from './App';
 
 function Home(props) {
   const { state } = props;
   const { isLoggedIn, hasSignedUp } = state;
-  console.log(state);
 
-  if (isLoggedIn) {
+  if (isLoggedIn === false) {
     return (
-      <div>
-        <h1>Home Sweet Home</h1>
-        <h1>in</h1>
-      </div>
+      <Redirect to="/login" />
     );
   }
   if (!hasSignedUp) {
@@ -26,7 +23,8 @@ function Home(props) {
   }
   return (
     <div>
-      <Login />
+      <h1>Home Sweet Home</h1>
+      <h1>in</h1>
     </div>
   );
 }
