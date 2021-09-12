@@ -43,3 +43,73 @@ color: #E7522B;
 .gradientover {
   z-index: 20;
 }
+
+.backlay {
+  width: 100%;
+  background-image: url('images/img2.jpg');
+  height: 100vh;
+  background-position: center;
+  background-size: cover;
+}
+
+.form {
+  height: 80vh;
+  width: 30em;
+  /* background: rgba(255, 0, 0, 0.178); */
+
+  margin: auto;
+  padding-top: 7vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.formoverlay {
+  background-color: rgba(219, 218, 218, 0.795);
+  height: 100vh;
+  width: 100%;
+  margin: auto;
+  position: relative;
+  top: -100vh;
+  z-index: 1;
+
+}
+
+.form h2 {
+  color: rgb(85, 84, 84);
+  z-index: 5;
+}
+.form span {
+  width: 75%;
+  text-align: center;
+  z-index: 5;
+}
+
+.form input{
+  width: 70%;
+  border: 1px solid grey;
+  padding: 10px;
+  border-radius: 30px;
+  z-index: 5;
+  text-align: center;
+}
+
+.form input:last-of-type,
+#pass::placeholder,
+#pass,
+.form input:last-of-type::placeholder {
+  color: #E7522B;
+}
+
+
+.form input:last-of-type,
+#pass {
+  border: 1px solid #E7522B;
+}
+
+.top {
+  margin-top: -100vh;
+ height: 800px;
+ width: 100%;
+}

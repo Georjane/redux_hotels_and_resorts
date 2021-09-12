@@ -12,15 +12,16 @@ function App(props) {
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
   // const { state } = props;
   const Button = styled.button`
-  background: linear-gradient(91.4deg, #E7522B 0%, #ffda95 100%); 
+  background-color: #E7522B; 
   padding: 12px 0; 
-  width: 150px; 
+  width: 150px;
   border: none;
   font-size: larger;
   border-radius: 30px;
   color: white;
   font-weight: bold;
   font-family: Segoe UI, sans-serif;
+  z-index: 5;
 `;
 
   const Button1 = styled.button`
@@ -131,17 +132,24 @@ function App(props) {
           <span className="sr-only">Next</span>
         </a>
       </div>
-      <h1>Please Signup</h1>
-
-      <Button>Sign in</Button>
-      {/* <img className="landingpage" alt="water" src="https://cdn.addresshotels.com/wp-content/uploads/2021/07/Edited-1-1200x874-1.jpg.webp" /> */}
-      <form onSubmit={handleSubmit}>
-        <input onChange={handleOnchangeUsername} type="text" name="username" placeholder="Username" required />
-        <input onChange={handleOnchangeEmail} type="email" name="email" placeholder="Email" required />
-        <input onChange={handleOnchangePassword} type="password" name="password" placeholder="Password" required />
-        <input onChange={handleOnchangePasswordConfirmation} type="password" name="passwordConfirmation" placeholder="Password Confirmation" required />
-        <button type="submit">Signup</button>
-      </form>
+      <div className="backlay">
+        <form className="form" onSubmit={handleSubmit}>
+          <h2>Sign Up</h2>
+          <span>
+            The hotel guests of Address Beach
+            Resort can now experience an exclusive Floating
+            Breakfast at the worlds highest outdoor infinity pool.
+          </span>
+          <input onChange={handleOnchangeUsername} type="text" name="username" placeholder="Username" required />
+          <input onChange={handleOnchangeEmail} type="email" name="email" placeholder="Email" required />
+          <input id="pass" onChange={handleOnchangePassword} type="password" name="password" placeholder="Password" required />
+          <input onChange={handleOnchangePasswordConfirmation} type="password" name="passwordConfirmation" placeholder="Password Confirmation" required />
+          <Button type="submit">Sign Up</Button>
+          <span>Address Hotels & Resorts</span>
+        </form>
+      </div>
+      <div className="formoverlay" />
+      <img className="top" alt="img" src="images/img4.jpg" />
     </div>
   );
 }
