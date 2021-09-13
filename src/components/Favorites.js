@@ -23,6 +23,7 @@ function Favorites(props) {
           });
         });
         setFavorites(myfavorites);
+        console.log(myfavorites.length);
       })
       .catch((err) => {
         console.log('favourites ', err);
@@ -35,25 +36,30 @@ function Favorites(props) {
         {username}
         &apos;`s Favorites
       </h1>
-      <div className="details">
-        <img className="detailsimg" alt="lolo" src="images/img4.jpg" />
-        <div className="detailsdiv">
-          <h2>Dine Around at Address Hotels + Resorts</h2>
-          <p>
-            Get up to 2 complimentary
-            tickets to the world’s greatest
-            show when you book with us this September.
-          </p>
-          <span>01 October – 31 March 2022</span>
-          <span>Multiple Location </span>
-          <span>stay@addresshotels.com</span>
-        </div>
-      </div>
       {favorites.map((favorite) => (
-        <div key={favorite.id}>
-          <h2>{favorite.title}</h2>
-          <p>{favorite.description}</p>
-          <img src={favorite.image_url} alt={favorite.title} />
+        <div key={favorite.id} className="card mb-3 stylecard">
+          <div className="row no-gutters">
+            <div className="col-md-6">
+              <img src={favorite.image_url} className="card-img" alt={favorite.title} />
+            </div>
+            <div className="col-md-6">
+              <div className="card-body">
+                <h5 className="card-title"><h2>{favorite.title}</h2></h5>
+                <p className="card-text">{favorite.description}</p>
+                <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
+                <p className="card-text">
+                  <span>01 October – 31 March 2022</span>
+                </p>
+                <p className="card-text">
+                  <span>Multiple Location </span>
+                </p>
+                <p className="card-text">
+                  <span>stay@addresshotels.com</span>
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       ))}
     </div>

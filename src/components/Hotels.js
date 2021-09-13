@@ -27,6 +27,9 @@ function Hotels(props) {
       hotel_id: e.target.name,
     };
     handleAddFavs(fav);
+    // const hrtbtn = document.querySelector('.heart');
+    e.target.nextSibling.classList.add('hrtbtn-clicked');
+    // hrtbtn.classList = 'hrtbtn-clicked';
     console.log('add fav', e.target.name, id);
   };
 
@@ -83,37 +86,32 @@ function Hotels(props) {
           <div className="detailsdiv">
             <h2>
               {hotel.title}
-              s
             </h2>
             <p>{hotel.description}</p>
             <span>01 October – 31 March 2022</span>
             <span>Multiple Location </span>
             <span>stay@addresshotels.com</span>
-            <Button>
-              View Details
-              <Link
-                to={{
-                  pathname: '/details',
-                  hotel: {
-                    id: hotel.id,
-                    title: hotel.title,
-                    description: hotel.description,
-                    image_url: hotel.image_url,
-                  },
-                }}
-              >
-                <button className="meal" type="button">
-                  Details
-                </button>
-              </Link>
-            </Button>
 
-            <span>
-              Add to Favorites
-              <button type="button" onClick={handleAddFavorite} name={hotel.id}>Add Fav</button>
+            <Link
+              to={{
+                pathname: '/details',
+                hotel: {
+                  id: hotel.id,
+                  title: hotel.title,
+                  description: hotel.description,
+                  image_url: hotel.image_url,
+                },
+              }}
+            >
+              <Button>
+                View Details
+              </Button>
+            </Link>
 
+            <span className="hrtdiv">
+              <button type="button" className="hrtbtn" onClick={handleAddFavorite} name={hotel.id}>Add to Favorites</button>
+              <i className="fa fa-heart heart" />
             </span>
-            <i className="fa fa-heart heart" />
           </div>
         </div>
       ))}

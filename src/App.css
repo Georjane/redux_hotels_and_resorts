@@ -150,7 +150,8 @@ input {
 }
 
 .heart {
-  color: red;
+  
+  color: rgb(212, 212, 216);
   font-size: 36px;
 }
 
@@ -168,4 +169,37 @@ input {
   justify-content: space-between;
   margin: 0 17vw;
   padding-bottom: 20px;
+}
+
+.hrtbtn {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.hrtdiv {
+  display: flex;
+  width: 11vw;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.hrtbtn-clicked {
+  color: red;
+  font-size: 36px;
+}
+
+.detai {
+  background-color: #F7F8F6;
+}
+
+.stylecard {
+  /* max-width: 540px; */
+  /* width: 100%; */
+  width: 90vw;
+  margin: auto;
+  margin-top: 5vh;
+  border: none;
+  background-color: #F7F8F6;
 }
