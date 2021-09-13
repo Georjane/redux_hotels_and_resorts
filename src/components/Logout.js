@@ -1,6 +1,22 @@
 import styled from 'styled-components';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router';
+import PropTypes from 'prop-types';
+import { LOGOUT } from '../actions';
 
-const Navbar = () => {
+const Logout = (props) => {
+  const { state } = props;
+  const { isLoggedIn } = state;
+  if (isLoggedIn === false) {
+    console.log('navnav============');
+  }
+
+  const handleLogout = () => {
+    const { LOGOUT } = props;
+    LOGOUT();
+      <Redirect to="/login" />;
+  };
+
   const Button = styled.button`
   background-color: transparent; 
   padding: 5px 0; 
@@ -31,21 +47,24 @@ const Navbar = () => {
 
       <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
         <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li className="nav-item">
+            <a className="nav-link white" href="/home">Home</a>
+          </li>
           <li className="nav-item active">
-            <a className="nav-link white" href="/register">
+            <a className="nav-link white" href="/home">
               Residences
               <span className="sr-only">(current)</span>
             </a>
           </li>
           <li className="nav-item">
-            <a className="nav-link white" href="/register">Dinning</a>
+            <a className="nav-link white" href="/home">Dinning</a>
           </li>
           <li className="nav-item">
-            <a className="nav-link white" href="/register" tabIndex="-1" aria-disabled="true">Events</a>
+            <a className="nav-link white" href="/home" tabIndex="-1" aria-disabled="true">Events</a>
           </li>
         </ul>
         <div>
-          <a href="login"><Button>Sign In</Button></a>
+          <a href="login"><Button type="button" onClick={handleLogout}>Log Out</Button></a>
         </div>
         <form className="form-inline my-2 my-lg-0">
           <input className="form-control mr-sm-2 transparent" type="search" placeholder="Search" aria-label="Search" />
@@ -55,4 +74,17 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+Logout.propTypes = {
+  state: PropTypes.objectOf(PropTypes.any).isRequired,
+  LOGOUT: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  state,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  LOGOUT: () => { dispatch(LOGOUT()); },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Logout);

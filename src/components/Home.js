@@ -6,8 +6,8 @@ import { Redirect } from 'react-router';
 import App from './App';
 import Hotels from './Hotels';
 import { ADDFAV, LOGOUT } from '../actions';
-import Navbar from './Navbar';
 import Hero from './Hero';
+import Logout from './Logout';
 
 function Home(props) {
   const { state } = props;
@@ -33,9 +33,6 @@ function Home(props) {
   };
   sessionStorage.setItem('user_id', state.users[0].id);
   const handleAddFavs = (fav) => {
-    console.log('fav==================');
-    console.log(fav);
-    console.log('fav==================');
     const { ADDFAV } = props;
     ADDFAV({
       fav,
@@ -45,7 +42,7 @@ function Home(props) {
   return (
     <div>
       <div className="gradient" />
-      <Navbar />
+      <Logout />
       <Hero />
       <button type="button" onClick={handleLogout}>Logout</button>
 
