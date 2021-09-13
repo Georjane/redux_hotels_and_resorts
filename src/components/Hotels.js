@@ -45,7 +45,7 @@ function Hotels(props) {
 
   return (
     <div className="Hotels">
-      <div className="favdiv">
+      <div className="favdiv container">
         <h1>View Our Offers</h1>
         <Link
           to={{

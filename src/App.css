@@ -171,19 +171,20 @@ input {
 
 .favbtn {
   background-color: transparent;
-  width: 10vw;
+  width: 150px;
   padding: 7px 0;
   border-radius: 5px;
-  border: 1px solid gray;
+  border: 1px solid #E7522B;
   outline: none;
-  
+  color: #E7522B;
 }
 
 .favdiv {
   display: flex;
   justify-content: space-between;
-  margin: 0 17vw;
-  padding-bottom: 20px;
+  /* margin: 0 17vw; */
+  align-items: center;
+  padding: 20px;
 }
 
 .hrtbtn {
@@ -196,19 +197,16 @@ input {
 
 .hrtdiv {
   display: flex;
-  width: 11vw;
+  width: 12vw;
   justify-content: space-around;
   align-items: center;
-  margin-left: 3vw;
+  /* padding-left: 20px; */
+  /* margin-left: 3vw; */
 }
 
 .hrtbtn-clicked {
   color: red;
   font-size: 36px;
-}
-
-.detai {
-  /* margin-top: 100px; */
 }
 
 .dpage .fixed{
@@ -220,6 +218,19 @@ input {
 
 .dpage .fixed p,
 .dpage .fixed a{
+  color: black;
+}
+
+
+.favorites .fixed{
+  background-color: white;
+  color: black;
+  padding: 0;
+  position: relative;
+}
+
+.favorites .fixed p,
+.favorites .fixed a{
   color: black;
 }
 

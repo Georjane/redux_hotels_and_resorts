@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router';
+import Logout from './Logout';
 
 function Favorites(props) {
   const { location } = props;
@@ -9,7 +10,7 @@ function Favorites(props) {
   if (userInfo === undefined) {
     return <Redirect to="/login" />;
   }
-  const { id, username, hotels } = userInfo;
+  const { id, hotels } = userInfo;
   const [favorites, setFavorites] = useState([]);
   useEffect(() => {
     axios.get('http://localhost:3001/favorites', { withCredentials: true })
@@ -32,10 +33,7 @@ function Favorites(props) {
 
   return (
     <div className="favorites">
-      <h1>
-        {username}
-        &apos;`s Favorites
-      </h1>
+      <Logout />
       {favorites.map((favorite) => (
         <div key={favorite.id} className="card mb-3 stylecard">
           <div className="row no-gutters">
