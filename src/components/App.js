@@ -61,6 +61,7 @@ function App(props) {
       <div className="gradient" />
       <Navbar />
       <Hero />
+      <div className="formoverlay" />
       <div className="backlay">
         <form className="form" onSubmit={handleSubmit}>
           <h2>Sign Up</h2>
@@ -77,8 +78,12 @@ function App(props) {
           <span>Address Hotels & Resorts</span>
         </form>
       </div>
-      <div className="formoverlay" />
-      <img className="top" alt="img" src="images/img4.jpg" />
+      {/* <div className="jumbotron jumbotron-fluid">
+        <div className="container">
+          <h1 className="display-4">Fluid jumbotron</h1>
+          <p className="lead">This/p>
+        </div>
+      </div> */}
     </div>
   );
 }

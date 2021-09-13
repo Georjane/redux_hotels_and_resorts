@@ -51,13 +51,14 @@ color: #E7522B;
   height: 100vh;
   background-position: center;
   background-size: cover;
+  z-index: -10;
 }
 
 .form {
   height: 80vh;
   width: 30em;
   /* background: rgba(255, 0, 0, 0.178); */
-
+z-index: 5;
   margin: auto;
   padding-top: 7vh;
   display: flex;
@@ -71,8 +72,8 @@ color: #E7522B;
   height: 100vh;
   width: 100%;
   margin: auto;
-  position: relative;
-  top: -100vh;
+  position: absolute;
+  top: 90vh;
   z-index: 1;
 
 }
@@ -110,9 +111,22 @@ color: #E7522B;
 }
 
 .top {
-  margin-top: -100vh;
+  margin-top: -50vh;
  height: 800px;
  width: 100%;
+}
+
+.top2 {
+  margin-top: -167vh;
+ height: 1100px;
+ width: 100%; background-color: white;
+}
+
+.footer {
+  background-color: white;
+  z-index: 30;
+  margin-bottom: 0;
+  padding-bottom: 20px;
 }
 
 .loginform {
@@ -205,4 +219,34 @@ input {
   margin-top: 5vh;
   border: none;
   background-color: #F7F8F6;
+}
+
+.footer h6,
+.footericons {
+  width: 30vw;
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+  font-size: large;
+  color: gray;
+  align-items: center;
+  text-align: center;
+}
+
+.footericons {
+  min-width: 10vw;
+  max-width: 120px;
+  font-size: x-large;
+  color: #E7522B;
+}
+
+.footericons a {
+  color: #E7522B;
+}
+
+.footerbtn {
+  background-color: transparent;
+  outline: none;
+  color: #E7522B;
+  border: 1px solid #E7522B;
 }
