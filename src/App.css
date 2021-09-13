@@ -161,6 +161,7 @@ input {
   padding: 7px 0;
   border-radius: 5px;
   border: 1px solid gray;
+  outline: none;
   
 }
 
@@ -176,6 +177,7 @@ input {
   border: none;
   padding: 0;
   margin: 0;
+  outline: none;
 }
 
 .hrtdiv {
@@ -183,6 +185,7 @@ input {
   width: 11vw;
   justify-content: space-around;
   align-items: center;
+  margin-left: 3vw;
 }
 
 .hrtbtn-clicked {

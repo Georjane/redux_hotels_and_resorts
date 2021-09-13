@@ -62,56 +62,51 @@ function Hotels(props) {
           </button>
         </Link>
       </div>
-
-      <div className="details">
-        <img className="detailsimg" alt="lolo" src="images/img4.jpg" />
-        <div className="detailsdiv">
-          <h2>Dine Around at Address Hotels + Resorts</h2>
-          <p>
-            Get up to 2 complimentary
-            tickets to the world’s greatest
-            show when you book with us this September.
-          </p>
-          <span>01 October – 31 March 2022</span>
-          <span>Multiple Location </span>
-          <span>stay@addresshotels.com</span>
-          <Button>View Details</Button>
-          <span>Add to Favorites</span>
-          <i className="fa fa-heart heart" />
-        </div>
-      </div>
       {hotels.map((hotel) => (
-        <div className="details" key={hotel.id}>
-          <img src={hotel.image_url} className="detailsimg" alt={hotel.title} />
-          <div className="detailsdiv">
-            <h2>
-              {hotel.title}
-            </h2>
-            <p>{hotel.description}</p>
-            <span>01 October – 31 March 2022</span>
-            <span>Multiple Location </span>
-            <span>stay@addresshotels.com</span>
-
-            <Link
-              to={{
-                pathname: '/details',
-                hotel: {
-                  id: hotel.id,
-                  title: hotel.title,
-                  description: hotel.description,
-                  image_url: hotel.image_url,
-                },
-              }}
-            >
-              <Button>
-                View Details
-              </Button>
-            </Link>
-
-            <span className="hrtdiv">
-              <button type="button" className="hrtbtn" onClick={handleAddFavorite} name={hotel.id}>Add to Favorites</button>
-              <i className="fa fa-heart heart" />
-            </span>
+        <div key={hotel.id} className="card mb-3 stylecard">
+          <div className="row no-gutters">
+            <div className="col-md-6">
+              <img src={hotel.image_url} className="card-img" alt={hotel.title} />
+            </div>
+            <div className="col-md-6">
+              <div className="card-body">
+                <h5 className="card-title"><h2>{hotel.title}</h2></h5>
+                <p className="card-text">{hotel.description}</p>
+                <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
+                <p className="card-text">
+                  <span>01 October – 31 March 2022</span>
+                </p>
+                <p className="card-text">
+                  <span>Multiple Location </span>
+                </p>
+                <p className="card-text">
+                  <span>stay@addresshotels.com</span>
+                </p>
+                <p className="card-text">
+                  <Link
+                    to={{
+                      pathname: '/details',
+                      hotel: {
+                        id: hotel.id,
+                        title: hotel.title,
+                        description: hotel.description,
+                        image_url: hotel.image_url,
+                      },
+                    }}
+                  >
+                    <Button>
+                      View Details
+                    </Button>
+                  </Link>
+                </p>
+                <p className="card-text">
+                  <span className="hrtdiv">
+                    <button type="button" className="hrtbtn" onClick={handleAddFavorite} name={hotel.id}>Add to Favorites</button>
+                    <i className="fa fa-heart heart" />
+                  </span>
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       ))}
