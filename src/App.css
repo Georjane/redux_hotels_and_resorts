@@ -59,7 +59,7 @@ color: #E7522B;
   width: 30vw;
   min-width: 360px;
   /* background: rgba(255, 0, 0, 0.178); */
-z-index: 5;
+  z-index: 5;
   margin: auto;
   padding-top: 7vh;
   display: flex;

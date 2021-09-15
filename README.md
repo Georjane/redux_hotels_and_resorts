@@ -2,35 +2,35 @@
 # Redux - Hotels & Resorts 
 ## Project Description
 
-This project is a Final capstone based on 
+This project is a Final capstone based on a find your house app. It specifically helps the user to find vacation hotels and resorts. 
 
 ## Technical requirements of the project
-1. The project is a single page application(SPA) built with React and Redux. 
-2. The data that is retrieved from the API is stored in the Redux store
-3. We filter the data that is retrieve from the API using a Filter stateless component
-4. Every page, the main page and pages for each item, has a unique route within the SPA
-5. The project is deployed and accessible online
+1. The project is a mobile web app which is responsive on desktop too
+2. The database has 3 tables, users, hotels, favorites table using Postgres as the DB
+3. It Connects to the back-end API to send and receive domain data. With routes for each of the screens, so the user can easily go back and forward, Using redux to store info used across the app, like the user info
 
 ## Project Structure
 – The App page is a container with React Router. It gets app state from Redux Store. Then the navbar now can display based on the state.
 
-– Login & Register pages have form for data submission (with support of react-validation library). They dispatch auth actions (login/register) to Redux Thunk Middleware which uses auth.service to call API.
+– Login & Register pages have form for data submission (with support of react-validation library). They dispatch auth actions (login/register) to Redux Thunk Middleware which uses apiMiddleware to call API.
 
-– auth.service methods use axios to make HTTP requests.
+– apiMiddleware methods use axios to make HTTP requests.
 
 – Home page is public for all users.
 
-– Hotels page displays hotel & resorts information after the login action is successful.
+– Hotels page displays a list of hotel & resorts information after the login action is successful.
+
+- When a user selects a hotel, detailed information about the hotel is presented and the possibility to add it to favourites. The user can access a list of favourite hotels
 
 ## Redux - Hotels & Resorts Screenshot
 ![Redux - Hotels & Resorts]()
 
 
-## Live Link on Heroku
-- [Redux - Hotels & Resorts]()
+## Live Link on Netlify
+- [Redux - Hotels & Resorts](https://keen-fermat-a31782.netlify.app)
 
 ## RESTful ROR API Repo Link
-- [RESTful ROR API Repo Link]()
+- [RESTful ROR API Repo Link](https://github.com/Georjane/authentication_api)
 
 ## Tools used
 - React
