@@ -1,12 +1,14 @@
 .bt {
   color: #2fb8ff;
-color: #9eecd9;
-color: #ffda95;
-color: #E7522B;
+  color: #9eecd9;
+  color: #ffda95;
+  color: #e7522b;
 }
+
 .selector-for-some-widget {
   box-sizing: content-box;
 }
+
 .gradient {
   width: 100%;
   height: 90vh;
@@ -14,21 +16,26 @@ color: #E7522B;
   background-image: linear-gradient(rgba(255, 0, 0, 0), rgba(3, 3, 3, 0.24), rgba(0, 0, 0, 0.767));
   z-index: 5;
 }
+
 .bglight {
   background-color: rgba(255, 0, 0, 0);
   position: fixed;
- z-index: 11;
- color: white;
- width: 100%;
- /* position: sticky; */
+  z-index: 11;
+  color: white;
+  width: 100%;
+
+  /* position: sticky; */
 }
+
 .white {
   color: white;
 }
+
 .transparent,
 #transparent {
   background-color: rgba(255, 255, 255, 0);
 }
+
 .landingpage img {
   height: 90vh;
 }
@@ -58,6 +65,7 @@ color: #E7522B;
   height: 80vh;
   width: 30vw;
   min-width: 360px;
+
   /* background: rgba(255, 0, 0, 0.178); */
   z-index: 5;
   margin: auto;
@@ -76,20 +84,25 @@ color: #E7522B;
   position: absolute;
   top: 90vh;
   z-index: 1;
-
 }
 
 .form h2 {
   color: rgb(85, 84, 84);
   z-index: 5;
 }
+
 .form span {
   width: 75%;
   text-align: center;
   z-index: 5;
 }
 
-.form input{
+input {
+  background: transparent;
+  outline: none;
+}
+
+.form input {
   width: 70%;
   border: 1px solid grey;
   padding: 10px;
@@ -98,29 +111,33 @@ color: #E7522B;
   text-align: center;
 }
 
+input:focus {
+  outline: none;
+}
+
 .form input:last-of-type,
 #pass::placeholder,
 #pass,
 .form input:last-of-type::placeholder {
-  color: #E7522B;
+  color: #e7522b;
 }
-
 
 .form input:last-of-type,
 #pass {
-  border: 1px solid #E7522B;
+  border: 1px solid #e7522b;
 }
 
 .top {
   margin-top: -50vh;
- height: 800px;
- width: 100%;
+  height: 800px;
+  width: 100%;
 }
 
 .top2 {
   margin-top: -167vh;
- height: 1100px;
- width: 100%; background-color: white;
+  height: 1100px;
+  width: 100%;
+  background-color: white;
 }
 
 .footer {
@@ -132,16 +149,6 @@ color: #E7522B;
 
 .loginform {
   height: 70vh;
-}
-
-input:focus {
-  outline: none;
-
-}
-
-input {
-  background: transparent;
-  outline: none;
 }
 
 .details {
@@ -165,7 +172,6 @@ input {
 }
 
 .heart {
-  
   color: rgb(212, 212, 216);
   font-size: 36px;
 }
@@ -175,14 +181,15 @@ input {
   width: 150px;
   padding: 7px 0;
   border-radius: 5px;
-  border: 1px solid #E7522B;
+  border: 1px solid #e7522b;
   outline: none;
-  color: #E7522B;
+  color: #e7522b;
 }
 
 .favdiv {
   display: flex;
   justify-content: space-between;
+
   /* margin: 0 17vw; */
   align-items: center;
   padding: 20px;
@@ -201,7 +208,9 @@ input {
   width: 12vw;
   justify-content: space-around;
   align-items: center;
+
   /* padding-left: 20px; */
+
   /* margin-left: 3vw; */
 }
 
@@ -210,20 +219,33 @@ input {
   font-size: 36px;
 }
 
-.dpage .fixed{
+.fixed {
+  font-weight: 400;
+  font-size: larger;
+  top: 0;
+}
+
+.logo p {
+  margin-left: -30px;
+}
+
+.dpage .fixed {
   background-color: white;
   color: black;
   padding: 0;
   position: relative;
 }
 
+.footericons a {
+  color: #e7522b;
+}
+
 .dpage .fixed p,
-.dpage .fixed a{
+.dpage .fixed a {
   color: black;
 }
 
-
-.favorites .fixed{
+.favorites .fixed {
   background-color: white;
   color: black;
   padding: 0;
@@ -231,18 +253,20 @@ input {
 }
 
 .favorites .fixed p,
-.favorites .fixed a{
+.favorites .fixed a {
   color: black;
 }
 
 .stylecard {
   /* max-width: 540px; */
+
   /* width: 100%; */
   width: 85vw;
   margin: auto;
+
   /* margin-top: 5vh; */
   border: none;
-  background-color: #F7F8F6;
+  background-color: #f7f8f6;
 }
 
 .footer h6,
@@ -262,30 +286,17 @@ input {
   justify-content: space-evenly;
   align-items: center;
 }
-.fixed {
-   font-weight: 400;
-   font-size: larger;
-   top: 0;
-}
-
-.logo p {
-  margin-left: -30px;
-}
 
 .footericons {
   min-width: 10vw;
   max-width: 120px;
   font-size: x-large;
-  color: #E7522B;
-}
-
-.footericons a {
-  color: #E7522B;
+  color: #e7522b;
 }
 
 .footerbtn {
   background-color: transparent;
   outline: none;
-  color: #E7522B;
-  border: 1px solid #E7522B;
+  color: #e7522b;
+  border: 1px solid #e7522b;
 }
