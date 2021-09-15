@@ -25,10 +25,10 @@ function Favorites(props) {
         });
         setFavorites(myfavorites);
         // console.log(myfavorites.length);
-      })
-      .catch((err) => {
-        // console.log('favourites ', err);
       });
+    // .catch((err) => {
+    //   // console.log('favourites ', err);
+    // });
   }, []);
 
   return (

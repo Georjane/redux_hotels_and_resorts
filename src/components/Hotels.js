@@ -37,10 +37,10 @@ function Hotels(props) {
     axios.get('http://localhost:3001/hotels', { withCredentials: true })
       .then((res) => {
         setHotels(res.data);
-      })
-      .catch((err) => {
-        // console.log('hotels ', err);
       });
+    // .catch((err) => {
+    //   // console.log('hotels ', err);
+    // });
   }, []);
 
   return (
