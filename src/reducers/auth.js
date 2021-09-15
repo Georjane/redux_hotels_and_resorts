@@ -6,14 +6,20 @@ const initialState = {
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'ADDFAV': {
-      console.log('fav added');
       const newState = {
         ...state, favAdded: true,
       };
       return newState;
     }
+    case 'ISLOGGEDIN': {
+      const newState = {
+        ...state, favAdded: action.payload,
+      };
+      return newState;
+    }
     case 'SIGNUP': {
       if (action.payload.status === 'created') {
+        // sessionStorage.setItem('user_id', action.payload.user.id);
         const newState = {
           ...state, isLoggedIn: true, hasSignedUp: true, users: [action.payload.user],
         };
@@ -26,7 +32,9 @@ const rootReducer = (state = initialState, action) => {
       return state;
     }
     case 'LOGIN': {
+      console.log(action.payload);
       if (action.payload.status === 'created') {
+        // sessionStorage.setItem('user_id', action.payload.user.id);
         const newState = {
           ...state, isLoggedIn: true, hasSignedUp: true, users: [action.payload.user],
         };

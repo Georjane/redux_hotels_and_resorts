@@ -14,6 +14,12 @@ export const LOGIN = (user) => ({
   },
 });
 
+export const ISLOGGEDIN = () => ({
+  type: 'ISLOGGEDIN',
+  meta: {
+    type: 'api',
+  },
+});
 export const LOGOUT = () => ({
   type: 'LOGOUT',
   payload: {
@@ -23,6 +29,7 @@ export const LOGOUT = () => ({
     type: 'api',
   },
 });
+
 export const ADDFAV = (favourite) => ({
   type: 'ADDFAV',
   payload: favourite,

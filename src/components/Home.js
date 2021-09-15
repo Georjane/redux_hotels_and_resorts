@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 // import ADDFAV from './ADDFAV';
 import { Redirect } from 'react-router';
 import App from './App';
 import Hotels from './Hotels';
-import { ADDFAV } from '../actions';
+import { ADDFAV, ISLOGGEDIN } from '../actions';
 import Hero from './Hero';
 import Logout from './Logout';
 
@@ -26,7 +26,7 @@ function Home(props) {
       </div>
     );
   }
-  sessionStorage.setItem('user_id', state.users[0].id);
+
   const handleAddFavs = (fav) => {
     const { ADDFAV } = props;
     ADDFAV({
@@ -34,11 +34,21 @@ function Home(props) {
     });
   };
 
+  const handleAddlog = () => {
+    const { ISLOGGEDIN } = props;
+    ISLOGGEDIN();
+  };
+
+  useEffect(() => {
+    const { ISLOGGEDIN } = props;
+    ISLOGGEDIN();
+  }, []);
   return (
     <div>
       <div className="gradient" />
       <Logout />
       <Hero />
+      <button type="button" onClick={handleAddlog}>log</button>
       <Hotels user={state.users} handleAddFavs={handleAddFavs} />
     </div>
   );
@@ -46,6 +56,7 @@ function Home(props) {
 Home.propTypes = {
   state: PropTypes.objectOf(PropTypes.any).isRequired,
   ADDFAV: PropTypes.func.isRequired,
+  ISLOGGEDIN: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -54,6 +65,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   ADDFAV: (fav) => { dispatch(ADDFAV(fav)); },
+  ISLOGGEDIN: (fav) => { dispatch(ISLOGGEDIN(fav)); },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
