@@ -1,0 +1,137 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the Hero properly 1`] = `
+<div>
+  <div
+    className="carousel slide landingpage"
+    data-ride="carousel"
+    id="carouselExampleCaptions"
+  >
+    <ol
+      className="carousel-indicators"
+    >
+      <li
+        className="active"
+        data-slide-to="0"
+        data-target="#carouselExampleCaptions"
+      />
+      <li
+        data-slide-to="1"
+        data-target="#carouselExampleCaptions"
+      />
+      <li
+        data-slide-to="2"
+        data-target="#carouselExampleCaptions"
+      />
+    </ol>
+    <div
+      className="carousel-inner"
+    >
+      <div
+        className="carousel-item active"
+      >
+        <img
+          alt="carosel"
+          className="d-block w-100"
+          src="images/img7.jpg"
+        />
+        <div
+          className="carousel-caption d-none d-md-block"
+        >
+          <h2>
+            Leisure and Family Vacations
+          </h2>
+          <p>
+            at Address Hotels + Resorts
+          </p>
+          <button
+            className="sc-bdfBQB bSgpNk"
+          >
+            Learn More
+          </button>
+        </div>
+      </div>
+      <div
+        className="carousel-item"
+      >
+        <img
+          alt="carosel"
+          className="d-block w-100"
+          src="images/img3.jpg"
+        />
+        <div
+          className="carousel-caption d-none d-md-block"
+        >
+          <h2>
+            Fun-Filled Stays
+          </h2>
+          <p>
+            at Address Hotels + Resorts
+          </p>
+          <button
+            className="sc-bdfBQB bSgpNk"
+          >
+            Learn More
+          </button>
+        </div>
+      </div>
+      <div
+        className="carousel-item"
+      >
+        <img
+          alt="carosel"
+          className="d-block w-100"
+          src="images/img5.jpg"
+        />
+        <div
+          className="carousel-caption d-none d-md-block"
+        >
+          <h2>
+            Experience Expo 2021 Free!
+          </h2>
+          <p>
+            Get 2 complimentary tickets to the world’s greatest show when you book with us.
+          </p>
+          <button
+            className="sc-bdfBQB bSgpNk"
+          >
+            Learn More
+          </button>
+        </div>
+      </div>
+    </div>
+    <a
+      className="carousel-control-prev gradientover"
+      data-slide="prev"
+      href="#carouselExampleCaptions"
+      role="button"
+    >
+      <span
+        aria-hidden="true"
+        className="carousel-control-prev-icon"
+      />
+      <span
+        className="sr-only"
+      >
+        Previous
+      </span>
+    </a>
+    <a
+      className="carousel-control-next gradientover"
+      data-slide="next"
+      href="#carouselExampleCaptions"
+      role="button"
+    >
+      <span
+        aria-hidden="true"
+        className="carousel-control-next-icon"
+      />
+      <span
+        className="sr-only"
+      >
+        Next
+      </span>
+    </a>
+  </div>
+</div>
+`;

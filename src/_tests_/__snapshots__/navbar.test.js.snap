@@ -1,0 +1,103 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the navbar properly 1`] = `
+<nav
+  className="navbar navbar-expand-lg bglight fixed"
+>
+  <button
+    aria-controls="navbarTogglerDemo03"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+    className="navbar-toggler"
+    data-target="#navbarTogglerDemo03"
+    data-toggle="collapse"
+    type="button"
+  >
+    <span
+      className="navbar-toggler-icon"
+    />
+  </button>
+  <a
+    className="navbar-brand white logo"
+    href="/register"
+  >
+    <img
+      alt="carosel"
+      className="w-25"
+      src="images/logo.png"
+    />
+    <p>
+      Address
+      <br />
+      Hotels & Resorts
+    </p>
+  </a>
+  <div
+    className="collapse navbar-collapse"
+    id="navbarTogglerDemo03"
+  >
+    <ul
+      className="navbar-nav mr-auto mt-2 mt-lg-0"
+    >
+      <li
+        className="nav-item active"
+      >
+        <a
+          className="nav-link white"
+          href="/register"
+        >
+          Residences
+          <span
+            className="sr-only"
+          >
+            (current)
+          </span>
+        </a>
+      </li>
+      <li
+        className="nav-item"
+      >
+        <a
+          className="nav-link white"
+          href="/register"
+        >
+          Dinning
+        </a>
+      </li>
+      <li
+        className="nav-item"
+      >
+        <a
+          aria-disabled="true"
+          className="nav-link white"
+          href="/register"
+          tabIndex="-1"
+        >
+          Events
+        </a>
+      </li>
+    </ul>
+    <div>
+      <a
+        href="login"
+      >
+        <button
+          className="sc-bdfBQB cqoxcE"
+        >
+          Sign In
+        </button>
+      </a>
+    </div>
+    <form
+      className="form-inline my-2 my-lg-0"
+    >
+      <input
+        aria-label="Search"
+        className="form-control mr-sm-2 transparent"
+        placeholder="Search"
+        type="search"
+      />
+    </form>
+  </div>
+</nav>
+`;
