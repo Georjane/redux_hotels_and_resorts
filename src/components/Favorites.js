@@ -13,7 +13,7 @@ function Favorites(props) {
   const { id, hotels } = userInfo;
   const [favorites, setFavorites] = useState([]);
   useEffect(() => {
-    axios.get('http://localhost:3001/favorites', { withCredentials: true })
+    axios.get('https://redux-authentication-api.herokuapp.com/favorites', { withCredentials: true })
       .then((res) => {
         const myfavorites = [];
         res.data.forEach((fav) => {

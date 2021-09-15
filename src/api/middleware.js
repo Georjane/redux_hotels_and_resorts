@@ -6,7 +6,7 @@ const apiMiddleware = (store) => (next) => (action) => {
   }
 
   if (action.type === 'SIGNUP') {
-    axios.post('http://localhost:3001/registrations', {
+    axios.post('https://redux-authentication-api.herokuapp.com/registrations', {
       user: {
         username: action.payload.username,
         email: action.payload.email,
@@ -23,7 +23,7 @@ const apiMiddleware = (store) => (next) => (action) => {
   }
 
   if (action.type === 'LOGIN') {
-    axios.post('http://localhost:3001/sessions', {
+    axios.post('https://redux-authentication-api.herokuapp.com/sessions', {
       user: {
         username: action.payload.username,
         password: action.payload.password,
@@ -38,7 +38,7 @@ const apiMiddleware = (store) => (next) => (action) => {
   }
 
   if (action.type === 'LOGOUT') {
-    axios.delete('http://localhost:3001/logout', {
+    axios.delete('https://redux-authentication-api.herokuapp.com/logout', {
       withCredentials: true,
     })
       .then((data) => {
@@ -52,7 +52,7 @@ const apiMiddleware = (store) => (next) => (action) => {
   if (action.type === 'ADDFAV') {
     // console.log(action.payload);
     // console.log(action.payload.fav.hotel_id);
-    axios.post('http://localhost:3001/favorites', {
+    axios.post('https://redux-authentication-api.herokuapp.com/favorites', {
       user_id: action.payload.fav.user_id,
       hotel_id: action.payload.fav.hotel_id,
     })
@@ -65,7 +65,7 @@ const apiMiddleware = (store) => (next) => (action) => {
   }
 
   if (action.type === 'ISLOGGEDIN') {
-    axios.get('http://localhost:3001/logged_in', {
+    axios.get('https://redux-authentication-api.herokuapp.com/logged_in', {
       withCredentials: true,
     })
       .then((data) => {

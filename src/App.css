@@ -56,7 +56,8 @@ color: #E7522B;
 
 .form {
   height: 80vh;
-  width: 30em;
+  max-width: 30em;
+  background-color: red;
   /* background: rgba(255, 0, 0, 0.178); */
 z-index: 5;
   margin: auto;

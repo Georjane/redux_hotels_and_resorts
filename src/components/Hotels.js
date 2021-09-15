@@ -34,7 +34,7 @@ function Hotels(props) {
   };
 
   useEffect(() => {
-    axios.get('http://localhost:3001/hotels', { withCredentials: true })
+    axios.get('https://redux-authentication-api.herokuapp.com/hotels', { withCredentials: true })
       .then((res) => {
         setHotels(res.data);
       });
