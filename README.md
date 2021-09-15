@@ -23,7 +23,7 @@ This project is a Final capstone based on a find your house app. It specifically
 - When a user selects a hotel, detailed information about the hotel is presented and the possibility to add it to favourites. The user can access a list of favourite hotels
 
 ## Redux - Hotels & Resorts Screenshot
-![Redux - Hotels & Resorts]()
+![Redux - Hotels & Resorts](https://user-images.githubusercontent.com/60772732/133516851-33c8472f-44d3-4a75-b9ba-6f7ce2e38987.png)
 
 
 ## Live Link on Netlify
