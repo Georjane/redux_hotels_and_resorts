@@ -24,10 +24,10 @@ function Favorites(props) {
           });
         });
         setFavorites(myfavorites);
-        console.log(myfavorites.length);
+        // console.log(myfavorites.length);
       })
       .catch((err) => {
-        console.log('favourites ', err);
+        // console.log('favourites ', err);
       });
   }, []);
 

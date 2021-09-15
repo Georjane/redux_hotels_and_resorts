@@ -19,7 +19,7 @@ function Home(props) {
     );
   }
   if (hasSignedUp === false) {
-    console.log('here');
+    // console.log('here');
     return (
       <div>
         <App />

@@ -23,7 +23,7 @@ const rootReducer = (state = initialState, action) => {
         const newState = {
           ...state, isLoggedIn: true, hasSignedUp: true, users: [action.payload.user],
         };
-        console.log(newState);
+        // console.log(newState);
         return newState;
       }
       // const newState = {
@@ -32,7 +32,7 @@ const rootReducer = (state = initialState, action) => {
       return state;
     }
     case 'LOGIN': {
-      console.log(action.payload);
+      // console.log(action.payload);
       if (action.payload.status === 'created') {
         // sessionStorage.setItem('user_id', action.payload.user.id);
         const newState = {
@@ -48,7 +48,7 @@ const rootReducer = (state = initialState, action) => {
       return newState;
     }
     case 'LOGOUT': {
-      console.log(action.payload.status);
+      // console.log(action.payload.status);
       if (action.payload.status === 200) {
         const newState = {
           ...state, isLoggedIn: false, hasSignedUp: true, users: [],

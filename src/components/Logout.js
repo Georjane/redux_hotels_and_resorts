@@ -8,7 +8,7 @@ const Logout = (props) => {
   const { state } = props;
   const { isLoggedIn } = state;
   if (isLoggedIn === false) {
-    console.log('navnav============');
+    // console.log('navnav============');
   }
 
   const handleLogout = () => {
