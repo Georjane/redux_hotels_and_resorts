@@ -10,7 +10,6 @@ import Logout from './Logout';
 
 function Home(props) {
   const { state } = props;
-  // console.log(state.users[0].id);
   const { isLoggedIn, hasSignedUp } = state;
   if (isLoggedIn === false) {
     return (

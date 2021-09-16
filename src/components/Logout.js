@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { LOGOUT } from '../actions';
 
@@ -47,31 +48,58 @@ const Logout = (props) => {
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon" />
       </button>
-      <a className="navbar-brand white logo" href="/register">
-        <img src="images/logo.png" className="w-25" alt="carosel" />
-        <p>
-          Address
-          <br />
-          Hotels & Resorts
-        </p>
-      </a>
+      <Link
+        to={{
+          pathname: '/home',
+        }}
+      >
+        <span className="navbar-brand white logo">
+          <img src="images/logo.png" className="w-25" alt="carosel" />
+          <p>
+            Address
+            <br />
+            Hotels & Resorts
+          </p>
+        </span>
+      </Link>
 
       <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
         <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
           <li className="nav-item">
-            <a className="nav-link white" href="/home">Home</a>
+            <Link
+              to={{
+                pathname: '/home',
+              }}
+            >
+              <span className="nav-link white">Home</span>
+            </Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link white" href="/home">
-              Residences
-              <span className="sr-only">(current)</span>
-            </a>
+            <Link
+              to={{
+                pathname: '/home',
+              }}
+            >
+              <span className="nav-link white">Residences</span>
+            </Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link white" href="/home">Dinning</a>
+            <Link
+              to={{
+                pathname: '/home',
+              }}
+            >
+              <span className="nav-link white">Dinning</span>
+            </Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link white" href="/home" tabIndex="-1" aria-disabled="true">Events</a>
+            <Link
+              to={{
+                pathname: '/home',
+              }}
+            >
+              <span className="nav-link white">Events</span>
+            </Link>
           </li>
         </ul>
         <div>

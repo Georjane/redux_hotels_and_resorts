@@ -33,10 +33,11 @@ const rootReducer = (state = initialState, action) => {
     }
     case 'LOGIN': {
       // console.log(action.payload);
+      const { user } = action.payload;
       if (action.payload.status === 'created') {
         // sessionStorage.setItem('user_id', action.payload.user.id);
         const newState = {
-          ...state, isLoggedIn: true, hasSignedUp: true, users: [action.payload.user],
+          ...state, isLoggedIn: true, hasSignedUp: true, loginErr: false, users: [user],
         };
         return newState;
       }

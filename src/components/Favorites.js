@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router';
+import { useHistory } from 'react-router-dom';
 import Logout from './Logout';
 
 function Favorites(props) {
@@ -10,6 +11,7 @@ function Favorites(props) {
   if (userInfo === undefined) {
     return <Redirect to="/login" />;
   }
+  const history = useHistory();
   const { id, hotels } = userInfo;
   const [favorites, setFavorites] = useState([]);
   useEffect(() => {
@@ -34,6 +36,7 @@ function Favorites(props) {
   return (
     <div className="favorites">
       <Logout />
+      <button className="carousel-control-prev-icon red" type="button" onClick={() => history.goBack()} aria-hidden="true" />
       {favorites.length === 0
         ? <h2>You have no favorite hotels yet</h2>
         : (

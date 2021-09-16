@@ -229,6 +229,13 @@ input:focus {
   top: 0;
 }
 
+.red {
+  background-color: rgb(172, 170, 170);
+  border: none;
+  padding: 2px;
+  margin-left: 30px;
+}
+
 .logo p {
   margin-left: -30px;
 }

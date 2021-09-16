@@ -1,6 +1,7 @@
 // import { useEffect } from 'react';
 // import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { useHistory } from 'react-router-dom';
 import { Redirect } from 'react-router';
 import Logout from './Logout';
 
@@ -10,6 +11,8 @@ function Details(props) {
   if (hotel === undefined) {
     return <Redirect to="/login" />;
   }
+  const history = useHistory();
+
   // const { title, description, image_url } = user[0];
   // const [hotels, setHotels] = useState([]);
 
@@ -26,7 +29,7 @@ function Details(props) {
   return (
     <div className="dpage">
       <Logout />
-
+      <button className="carousel-control-prev-icon red" type="button" onClick={() => history.goBack()} aria-hidden="true" />
       <div className="detai">
 
         <div className="card mb-3 stylecard">
