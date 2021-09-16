@@ -42,7 +42,6 @@ const apiMiddleware = (store) => (next) => (action) => {
       withCredentials: true,
     })
       .then((data) => {
-        // console.log(data);
         const newActions = { ...action, payload: data };
         delete newActions.meta;
         return store.dispatch(newActions);
@@ -50,14 +49,11 @@ const apiMiddleware = (store) => (next) => (action) => {
   }
 
   if (action.type === 'ADDFAV') {
-    // console.log(action.payload);
-    // console.log(action.payload.fav.hotel_id);
     axios.post('https://redux-authentication-api.herokuapp.com/favorites', {
       user_id: action.payload.fav.user_id,
       hotel_id: action.payload.fav.hotel_id,
     })
       .then((data) => {
-        // console.log(data);
         const newActions = { ...action, payload: data };
         delete newActions.meta;
         return store.dispatch(newActions);
@@ -69,7 +65,6 @@ const apiMiddleware = (store) => (next) => (action) => {
       withCredentials: true,
     })
       .then((data) => {
-        // console.log(data);
         const newActions = { ...action, payload: data.data };
         delete newActions.meta;
         return store.dispatch(newActions);

@@ -11,7 +11,6 @@ const Logout = (props) => {
   const { state } = props;
   const { isLoggedIn } = state;
   if (isLoggedIn === false) {
-    // console.log('navnav============');
   }
 
   const handleLogout = () => {
@@ -21,11 +20,9 @@ const Logout = (props) => {
   };
   const changeBackground = () => {
     if (window.scrollY >= 100) {
-      //   if (document.body.scrollTop >= 100) {
       setNavbar(true);
     } else {
       setNavbar(false);
-      //   }
     }
   };
   window.addEventListener('scroll', changeBackground);

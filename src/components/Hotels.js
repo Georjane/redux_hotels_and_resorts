@@ -27,10 +27,7 @@ function Hotels(props) {
       hotel_id: e.target.name,
     };
     handleAddFavs(fav);
-    // const hrtbtn = document.querySelector('.heart');
     e.target.nextSibling.classList.add('hrtbtn-clicked');
-    // hrtbtn.classList = 'hrtbtn-clicked';
-    // console.log('add fav', e.target.name, id);
   };
 
   useEffect(() => {
@@ -38,9 +35,6 @@ function Hotels(props) {
       .then((res) => {
         setHotels(res.data);
       });
-    // .catch((err) => {
-    //   // console.log('hotels ', err);
-    // });
   }, []);
 
   return (

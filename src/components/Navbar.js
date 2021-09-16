@@ -6,7 +6,6 @@ const Navbar = () => {
 
   const changeBackground = () => {
     if (window.scrollY >= 100) {
-      //   if (document.body.scrollTop >= 100) {
       setNavbar(true);
     } else {
       setNavbar(false);
@@ -14,18 +13,6 @@ const Navbar = () => {
     }
   };
   window.addEventListener('scroll', changeBackground);
-  // changeBackground();
-  // const myNav = document.getElementById('mynav');
-  // window.onscroll = function () {
-  //   if (document.body.scrollTop >= 100) {
-  //     myNav.classList.add('nav-colored');
-  //     myNav.classList.remove('nav-transparent');
-  //   } else {
-  //     myNav.classList.add('nav-transparent');
-  //     myNav.classList.remove('nav-colored');
-  //   }
-  // };
-
   const Button = styled.button`
   background-color: transparent; 
   padding: 5px 0; 

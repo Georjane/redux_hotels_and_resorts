@@ -12,7 +12,6 @@ function App(props) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
-  // const { state } = props;
   const Button = styled.button`
   background-color: #E7522B; 
   padding: 12px 0; 
@@ -78,12 +77,6 @@ function App(props) {
           <span>Address Hotels & Resorts</span>
         </form>
       </div>
-      {/* <div className="jumbotron jumbotron-fluid">
-        <div className="container">
-          <h1 className="display-4">Fluid jumbotron</h1>
-          <p className="lead">This/p>
-        </div>
-      </div> */}
     </div>
   );
 }

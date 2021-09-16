@@ -1,5 +1,3 @@
-// import { useEffect } from 'react';
-// import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import { Redirect } from 'react-router';
@@ -12,19 +10,6 @@ function Details(props) {
     return <Redirect to="/login" />;
   }
   const history = useHistory();
-
-  // const { title, description, image_url } = user[0];
-  // const [hotels, setHotels] = useState([]);
-
-  // useEffect(() => {
-  //   axios.get('http://localhost:3001/hotels', { withCredentials: true })
-  //     .then((res) => {
-  //       setHotels(res.data);
-  //     })
-  //     .catch((err) => {
-  //       console.log('hotels ', err);
-  //     });
-  // }, []);
 
   return (
     <div className="dpage">
@@ -63,7 +48,6 @@ function Details(props) {
 Details.propTypes = {
   hotel: PropTypes.objectOf(PropTypes.any).isRequired,
   location: PropTypes.objectOf(PropTypes.any).isRequired,
-  // id: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
 export default Details;
