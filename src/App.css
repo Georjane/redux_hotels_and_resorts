@@ -241,11 +241,11 @@ input:focus {
   color: #e7522b;
 }
 
-.active { 
+.active {
   background-color: white;
   color: black;
- }
-.nav-transparent { background-color:transparent;}
+}
+.nav-transparent { background-color: transparent; }
 
 .dpage .fixed p,
 .dpage .fixed a {

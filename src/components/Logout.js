@@ -8,10 +8,6 @@ import { LOGOUT } from '../actions';
 
 const Logout = (props) => {
   const [navbar, setNavbar] = useState(false);
-  const { state } = props;
-  const { isLoggedIn } = state;
-  if (isLoggedIn === false) {
-  }
 
   const handleLogout = () => {
     const { LOGOUT } = props;
@@ -111,7 +107,6 @@ const Logout = (props) => {
 };
 
 Logout.propTypes = {
-  state: PropTypes.objectOf(PropTypes.any).isRequired,
   LOGOUT: PropTypes.func.isRequired,
 };
 
