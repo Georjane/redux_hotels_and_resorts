@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-// import ADDFAV from './ADDFAV';
 import { Redirect } from 'react-router';
 import App from './App';
 import Hotels from './Hotels';
@@ -34,11 +33,6 @@ function Home(props) {
     });
   };
 
-  const handleAddlog = () => {
-    const { ISLOGGEDIN } = props;
-    ISLOGGEDIN();
-  };
-
   useEffect(() => {
     const { ISLOGGEDIN } = props;
     ISLOGGEDIN();
@@ -48,7 +42,6 @@ function Home(props) {
       <div className="gradient" />
       <Logout />
       <Hero />
-      <button type="button" onClick={handleAddlog}>log</button>
       <Hotels user={state.users} handleAddFavs={handleAddFavs} />
     </div>
   );

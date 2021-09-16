@@ -1,6 +1,31 @@
 import styled from 'styled-components';
+import { useState } from 'react';
 
 const Navbar = () => {
+  const [navbar, setNavbar] = useState(false);
+
+  const changeBackground = () => {
+    if (window.scrollY >= 100) {
+      //   if (document.body.scrollTop >= 100) {
+      setNavbar(true);
+    } else {
+      setNavbar(false);
+      //   }
+    }
+  };
+  window.addEventListener('scroll', changeBackground);
+  // changeBackground();
+  // const myNav = document.getElementById('mynav');
+  // window.onscroll = function () {
+  //   if (document.body.scrollTop >= 100) {
+  //     myNav.classList.add('nav-colored');
+  //     myNav.classList.remove('nav-transparent');
+  //   } else {
+  //     myNav.classList.add('nav-transparent');
+  //     myNav.classList.remove('nav-colored');
+  //   }
+  // };
+
   const Button = styled.button`
   background-color: transparent; 
   padding: 5px 0; 
@@ -16,7 +41,7 @@ const Navbar = () => {
 `;
 
   return (
-    <nav className="navbar navbar-expand-lg bglight fixed">
+    <nav className={navbar ? 'navbar navbar-expand-lg bglight fixed active' : 'navbar navbar-expand-lg bglight fixed'}>
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon" />
       </button>
@@ -31,7 +56,7 @@ const Navbar = () => {
 
       <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
         <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
-          <li className="nav-item active">
+          <li className="nav-item">
             <a className="nav-link white" href="/register">
               Residences
               <span className="sr-only">(current)</span>

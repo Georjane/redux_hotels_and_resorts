@@ -1,10 +1,12 @@
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { LOGOUT } from '../actions';
 
 const Logout = (props) => {
+  const [navbar, setNavbar] = useState(false);
   const { state } = props;
   const { isLoggedIn } = state;
   if (isLoggedIn === false) {
@@ -16,7 +18,16 @@ const Logout = (props) => {
     LOGOUT();
       <Redirect to="/login" />;
   };
-
+  const changeBackground = () => {
+    if (window.scrollY >= 100) {
+      //   if (document.body.scrollTop >= 100) {
+      setNavbar(true);
+    } else {
+      setNavbar(false);
+      //   }
+    }
+  };
+  window.addEventListener('scroll', changeBackground);
   const Button = styled.button`
   background-color: transparent; 
   padding: 5px 0; 
@@ -32,7 +43,7 @@ const Logout = (props) => {
 `;
 
   return (
-    <nav className="navbar navbar-expand-lg bglight fixed">
+    <nav className={navbar ? 'navbar navbar-expand-lg bglight fixed active' : 'navbar navbar-expand-lg bglight fixed'}>
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon" />
       </button>
@@ -50,7 +61,7 @@ const Logout = (props) => {
           <li className="nav-item">
             <a className="nav-link white" href="/home">Home</a>
           </li>
-          <li className="nav-item active">
+          <li className="nav-item">
             <a className="nav-link white" href="/home">
               Residences
               <span className="sr-only">(current)</span>

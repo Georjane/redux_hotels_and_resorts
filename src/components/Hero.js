@@ -16,10 +16,13 @@ const Hero = () => {
           <li data-target="#carouselExampleCaptions" data-slide-to="0" className="active" />
           <li data-target="#carouselExampleCaptions" data-slide-to="1" />
           <li data-target="#carouselExampleCaptions" data-slide-to="2" />
+          <li data-target="#carouselExampleCaptions" data-slide-to="3" />
+          <li data-target="#carouselExampleCaptions" data-slide-to="4" />
         </ol>
         <div className="carousel-inner">
           <div className="carousel-item active">
-            <img src="images/img7.jpg" className="d-block w-100" alt="carosel" />
+            <img src="images/img7.jpg" className="d-none d-md-block w-100" alt="carosel" />
+            <img src="images/img7square.jpg" className="d-block d-md-none w-100" alt="carosel" />
             <div className="carousel-caption d-none d-md-block">
               <h2>Leisure and Family Vacations</h2>
               <p>at Address Hotels + Resorts</p>
@@ -27,18 +30,38 @@ const Hero = () => {
             </div>
           </div>
           <div className="carousel-item">
-            <img src="images/img3.jpg" className="d-block w-100" alt="carosel" />
+            <img src="images/img8.jpg" className="d-none d-md-block w-100" alt="carosel" />
+            <img src="images/img8square.jpg" className="d-block d-md-none w-100" alt="carosel" />
             <div className="carousel-caption d-none d-md-block">
-              <h2>Fun-Filled Stays</h2>
+              <h2>Brunch with Reel Cinemas</h2>
               <p>at Address Hotels + Resorts</p>
               <Button1>Learn More</Button1>
             </div>
           </div>
           <div className="carousel-item">
-            <img src="images/img5.jpg" className="d-block w-100" alt="carosel" />
+            <img src="images/img5.jpg" className="d-none d-md-block w-100" alt="carosel" />
+            <img src="images/img5square.jpg" className="d-block d-md-none w-100" alt="carosel" />
             <div className="carousel-caption d-none d-md-block">
               <h2>Experience Expo 2021 Free!</h2>
               <p>Get 2 complimentary tickets to the world’s greatest show when you book with us.</p>
+              <Button1>Learn More</Button1>
+            </div>
+          </div>
+          <div className="carousel-item">
+            <img src="images/img9.jpg" className="d-none d-md-block w-100" alt="carosel" />
+            <img src="images/img9square.jpg" className="d-block d-md-none w-100" alt="carosel" />
+            <div className="carousel-caption d-none d-md-block">
+              <h2>Longer Getaways</h2>
+              <p>at Address Hotels + Resorts</p>
+              <Button1>Learn More</Button1>
+            </div>
+          </div>
+          <div className="carousel-item">
+            <img src="images/img3.jpg" className="d-none d-md-block w-100" alt="carosel" />
+            <img src="images/img3square.jpg" className="d-block d-md-none w-100" alt="carosel" />
+            <div className="carousel-caption d-none d-md-block">
+              <h2>Fun-Filled Stays</h2>
+              <p>at Address Hotels + Resorts</p>
               <Button1>Learn More</Button1>
             </div>
           </div>

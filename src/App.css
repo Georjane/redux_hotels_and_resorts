@@ -97,6 +97,10 @@
   z-index: 5;
 }
 
+.active a {
+  color: black;
+}
+
 input {
   background: transparent;
   outline: none;
@@ -239,6 +243,12 @@ input:focus {
 .footericons a {
   color: #e7522b;
 }
+
+.active { 
+  background-color: white;
+  color: black;
+ }
+.nav-transparent { background-color:transparent;}
 
 .dpage .fixed p,
 .dpage .fixed a {
