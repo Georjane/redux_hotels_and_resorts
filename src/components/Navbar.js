@@ -30,7 +30,7 @@ const Navbar = () => {
   return (
     <nav className={navbar ? 'navbar navbar-expand-lg bglight fixed active' : 'navbar navbar-expand-lg bglight fixed'}>
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-        <span className="navbar-toggler-icon" />
+        <span id="menu-span" className="navbar-toggler-icon menu-bar"><i className="fa fa-bars" /></span>
       </button>
       <a className="navbar-brand white logo" href="/register">
         <img src="images/logo.png" className="w-25" alt="carosel" />

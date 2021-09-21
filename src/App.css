@@ -46,10 +46,6 @@
   font-size: 1.3rem;
 }
 
-.gradientover {
-  z-index: 20;
-}
-
 .backlay {
   width: 100%;
   background-image: url('images/img2.jpg');
@@ -87,13 +83,19 @@
   z-index: 5;
 }
 
+#menu-span {
+  color: black;
+
+}
+
 .form span {
   width: 75%;
   text-align: center;
   z-index: 5;
 }
 
-.active a {
+.active a,
+.active span {
   color: black;
 }
 
@@ -245,7 +247,6 @@ input:focus {
   background-color: white;
   color: black;
 }
-.nav-transparent { background-color: transparent; }
 
 .dpage .fixed p,
 .dpage .fixed a {
@@ -301,4 +302,11 @@ input:focus {
   outline: none;
   color: #e7522b;
   border: 1px solid #e7522b;
+}
+
+.menu-bar {
+  color: black;
+  z-index: 100;
+border: none;
+  font-size: larger;
 }

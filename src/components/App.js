@@ -25,26 +25,6 @@ function App(props) {
   z-index: 5;
 `;
 
-  const handleOnchangeUsername = (e) => {
-    e.preventDefault();
-    setUsername(e.target.value);
-  };
-
-  const handleOnchangeEmail = (e) => {
-    e.preventDefault();
-    setEmail(e.target.value);
-  };
-
-  const handleOnchangePassword = (e) => {
-    e.preventDefault();
-    setPassword(e.target.value);
-  };
-
-  const handleOnchangePasswordConfirmation = (e) => {
-    e.preventDefault();
-    setPasswordConfirmation(e.target.value);
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const { SIGNUP } = props;
@@ -69,12 +49,17 @@ function App(props) {
             Resort can now experience an exclusive Floating
             Breakfast at the worlds highest outdoor infinity pool.
           </span>
-          <input onChange={handleOnchangeUsername} type="text" name="username" placeholder="Username" required />
-          <input onChange={handleOnchangeEmail} type="email" name="email" placeholder="Email" required />
-          <input id="pass" onChange={handleOnchangePassword} type="password" name="password" placeholder="Password" required />
-          <input onChange={handleOnchangePasswordConfirmation} type="password" name="passwordConfirmation" placeholder="Password Confirmation" required />
+          <input onChange={(e) => setUsername(e.target.value)} type="text" name="username" placeholder="Username" value={username} required />
+          <input onChange={(e) => setEmail(e.target.value)} type="email" name="email" placeholder="Email" value={email} required />
+          <input id="pass" onChange={(e) => setPassword(e.target.value)} type="password" name="password" placeholder="Password" value={password} required />
+          <input onChange={(e) => setPasswordConfirmation(e.target.value)} type="password" name="passwordConfirmation" placeholder="Password Confirmation" value={passwordConfirmation} required />
           <Button type="submit">Sign Up</Button>
           <span>Address Hotels & Resorts</span>
+          <span>
+            Have an account already?
+            {' '}
+            <a href="/login">Sign In</a>
+          </span>
         </form>
       </div>
     </div>

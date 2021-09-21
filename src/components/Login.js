@@ -12,10 +12,6 @@ function Login(props) {
   const { isLoggedIn, hasSignedUp } = state;
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const handleOnchangeUsername = (e) => {
-    e.preventDefault();
-    setUsername(e.target.value);
-  };
   const Button = styled.button`
   background-color: #E7522B; 
   padding: 12px 0; 
@@ -28,10 +24,6 @@ function Login(props) {
   font-family: Segoe UI, sans-serif;
   z-index: 5;
 `;
-  const handleOnchangePassword = (e) => {
-    e.preventDefault();
-    setPassword(e.target.value);
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -67,10 +59,15 @@ function Login(props) {
             Resort can now experience an exclusive Floating
             Breakfast at the worlds highest outdoor infinity pool.
           </span>
-          <input id="transparent" onChange={handleOnchangeUsername} type="text" name="username" placeholder="Username" required />
-          <input onChange={handleOnchangePassword} type="password" name="password" placeholder="Password" required />
+          <input id="transparent" onChange={(e) => setUsername(e.target.value)} type="text" name="username" placeholder="Username" value={username} required />
+          <input onChange={(e) => setPassword(e.target.value)} type="password" name="password" placeholder="Password" value={password} required />
           <Button type="submit">Log In</Button>
           <span>Address Hotels & Resorts</span>
+          <span>
+            <a href="/register">Register</a>
+            {' '}
+            if you do not have an account
+          </span>
         </form>
       </div>
       <div className="formoverlay" />
