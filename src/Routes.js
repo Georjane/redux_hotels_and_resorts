@@ -18,7 +18,7 @@ const Routes = () => {
   });
   return (
     <BrowserRouter>
-      <ToastContainer autoclose={10000} />
+      <ToastContainer autoclose={5000} />
       <Switch>
         <Route exact path="/" component={App} />
         <Route exact path="/register" component={App} />

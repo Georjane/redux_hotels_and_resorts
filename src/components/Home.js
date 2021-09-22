@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Hotels from './Hotels';
-import { ADDFAV, ISLOGGEDIN } from '../actions';
+import { ADDFAV } from '../actions';
 import Hero from './Hero';
 import Logout from './Logout';
 
@@ -37,7 +37,6 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   ADDFAV: (fav) => { dispatch(ADDFAV(fav)); },
-  ISLOGGEDIN: () => { dispatch(ISLOGGEDIN()); },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

@@ -39,7 +39,7 @@ const Logout = (props) => {
 `;
 
   if (logout === true) {
-    toast.success('Logged out successfully!');
+    toast.success('You are loggout out');
   }
 
   if (isLoggedIn === false) {

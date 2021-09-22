@@ -205,8 +205,7 @@ input:focus {
 
 .hrtdiv {
   display: flex;
-  width: 12vw;
-  justify-content: space-around;
+  justify-content: flex-start;
   align-items: center;
 }
 
@@ -310,3 +309,17 @@ input:focus {
 border: none;
   font-size: larger;
 }
+
+.addfavs {
+  background-color: #e7512b00;
+  padding: 5px 10px;
+  border: solid 1px #e7522b;
+  color: #e7522b;
+  margin-right: 20px;
+}
+
+.addfavs:hover {
+  background-color: #e7522b;
+  color: white;
+}
+

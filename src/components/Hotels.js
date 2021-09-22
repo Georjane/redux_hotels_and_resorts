@@ -94,7 +94,7 @@ function Hotels(props) {
                 </p>
                 <p className="card-text">
                   <span className="hrtdiv">
-                    <button type="button" className="hrtbtn" onClick={handleAddFavorite} name={hotel.id}>Add to Favorites</button>
+                    <button type="button" className="hrtbtn addfavs" onClick={handleAddFavorite} name={hotel.id}>Add to Favorites</button>
                     <i className="fa fa-heart heart" />
                   </span>
                 </p>
