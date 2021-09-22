@@ -5,8 +5,9 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 function Hotels(props) {
-  const { user, handleAddFavs } = props;
-  const { id, username } = user[0];
+  const { handleAddFavs } = props;
+  const id = sessionStorage.getItem('user_id');
+  // const { id, username } = user[0];
   const [hotels, setHotels] = useState([]);
   const Button = styled.button`
   background-color: #E7522B; 
@@ -46,7 +47,6 @@ function Hotels(props) {
             pathname: '/favorites',
             userInfo: {
               id,
-              username,
               hotels,
             },
           }}
@@ -108,8 +108,8 @@ function Hotels(props) {
   );
 }
 Hotels.propTypes = {
-  user: PropTypes.objectOf(PropTypes.any).isRequired,
-  id: PropTypes.objectOf(PropTypes.any).isRequired,
+  // user: PropTypes.objectOf(PropTypes.any).isRequired,
+  // id: PropTypes.objectOf(PropTypes.any).isRequired,
   handleAddFavs: PropTypes.func.isRequired,
 };
 

@@ -3,11 +3,15 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router';
 import styled from 'styled-components';
-import { SIGNUP } from '../actions';
+import { SIGNUP, ISLOGGEDIN } from '../actions';
 import Hero from './Hero';
 import Navbar from './Navbar';
 
 function App(props) {
+  console.log(props);
+  const { state } = props;
+  const { isLoggedIn } = state;
+  console.log(isLoggedIn);
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -34,6 +38,14 @@ function App(props) {
     props.history.push('./home');
       <Redirect to="/home" />;
   };
+
+  const checkLogin = () => {
+    const { ISLOGGEDIN } = props;
+    ISLOGGEDIN();
+    console.log('checking');
+  };
+
+  console.log(checkLogin());
 
   return (
     <div>
@@ -67,7 +79,10 @@ function App(props) {
 }
 App.propTypes = {
   history: PropTypes.objectOf(PropTypes.any).isRequired,
+  isLoggedIn: PropTypes.objectOf(PropTypes.any).isRequired,
+  state: PropTypes.objectOf(PropTypes.any).isRequired,
   SIGNUP: PropTypes.func.isRequired,
+  ISLOGGEDIN: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -76,6 +91,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   SIGNUP: (username) => { dispatch(SIGNUP(username)); },
+  ISLOGGEDIN: () => { dispatch(ISLOGGEDIN()); },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

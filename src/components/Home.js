@@ -1,3 +1,4 @@
+// import React from 'react';
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -11,6 +12,18 @@ import Logout from './Logout';
 function Home(props) {
   const { state } = props;
   const { isLoggedIn, hasSignedUp } = state;
+  // const checkLogin = () => {
+  //   const { ISLOGGEDIN } = props;
+  //   ISLOGGEDIN();
+  //   console.log('checking');
+  // };
+
+  // checkLogin();
+  useEffect(() => {
+    const { ISLOGGEDIN } = props;
+    ISLOGGEDIN();
+  }, []);
+
   if (isLoggedIn === false) {
     return (
       <Redirect to="/login" />
@@ -31,10 +44,6 @@ function Home(props) {
     });
   };
 
-  useEffect(() => {
-    const { ISLOGGEDIN } = props;
-    ISLOGGEDIN();
-  }, []);
   return (
     <div>
       <div className="gradient" />
@@ -56,7 +65,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   ADDFAV: (fav) => { dispatch(ADDFAV(fav)); },
-  ISLOGGEDIN: (fav) => { dispatch(ISLOGGEDIN(fav)); },
+  ISLOGGEDIN: () => { dispatch(ISLOGGEDIN()); },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

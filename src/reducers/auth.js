@@ -12,13 +12,19 @@ const rootReducer = (state = initialState, action) => {
       return newState;
     }
     case 'ISLOGGEDIN': {
-      const newState = {
-        ...state, favAdded: action.payload,
-      };
-      return newState;
+      if (sessionStorage.getItem('user_id')) {
+        console.log('loggedin');
+        const newState = {
+          ...state, isLoggedIn: true,
+        };
+        return newState;
+      }
+      console.log('loggedout');
+      return state;
     }
     case 'SIGNUP': {
       if (action.payload.status === 'created') {
+        sessionStorage.setItem('user_id', action.payload.user.id);
         const newState = {
           ...state, isLoggedIn: true, hasSignedUp: true, users: [action.payload.user],
         };
@@ -43,6 +49,9 @@ const rootReducer = (state = initialState, action) => {
     }
     case 'LOGOUT': {
       if (action.payload.status === 200) {
+        console.log('logginggggg out');
+        sessionStorage.setItem('logout', true);
+        sessionStorage.removeItem('user_id');
         const newState = {
           ...state, isLoggedIn: false, hasSignedUp: true, users: [],
         };

@@ -60,16 +60,6 @@ const apiMiddleware = (store) => (next) => (action) => {
       });
   }
 
-  if (action.type === 'ISLOGGEDIN') {
-    axios.get('https://redux-authentication-api.herokuapp.com/logged_in', {
-      withCredentials: true,
-    })
-      .then((data) => {
-        const newActions = { ...action, payload: data.data };
-        delete newActions.meta;
-        return store.dispatch(newActions);
-      });
-  }
   return next(action);
 };
 

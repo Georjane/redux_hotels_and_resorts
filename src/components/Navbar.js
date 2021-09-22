@@ -9,9 +9,9 @@ const Navbar = () => {
       setNavbar(true);
     } else {
       setNavbar(false);
-      //   }
     }
   };
+
   window.addEventListener('scroll', changeBackground);
   const Button = styled.button`
   background-color: transparent; 
