@@ -40,7 +40,6 @@ const rootReducer = (state = initialState, action) => {
       return state;
     }
     case 'LOGIN': {
-      console.log(action.payload.status);
       const { user } = action.payload;
       if (action.payload.status === 'created') {
         sessionStorage.setItem('user_id', user.id);

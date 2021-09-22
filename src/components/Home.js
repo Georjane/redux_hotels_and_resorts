@@ -8,7 +8,6 @@ import Logout from './Logout';
 
 function Home(props) {
   const { state } = props;
-  console.log(sessionStorage.getItem('user_id'));
 
   const handleAddFavs = (fav) => {
     const { ADDFAV } = props;

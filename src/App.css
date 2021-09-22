@@ -85,7 +85,6 @@
 
 #menu-span {
   color: black;
-
 }
 
 .form span {
@@ -306,7 +305,7 @@ input:focus {
 .menu-bar {
   color: black;
   z-index: 100;
-border: none;
+  border: none;
   font-size: larger;
 }
 
@@ -322,4 +321,3 @@ border: none;
   background-color: #e7522b;
   color: white;
 }
-
