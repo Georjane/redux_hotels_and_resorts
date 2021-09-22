@@ -42,7 +42,6 @@ const apiMiddleware = (store) => (next) => (action) => {
       withCredentials: true,
     })
       .then((data) => {
-        console.log(data);
         const newActions = { ...action, payload: data };
         delete newActions.meta;
         return store.dispatch(newActions);
