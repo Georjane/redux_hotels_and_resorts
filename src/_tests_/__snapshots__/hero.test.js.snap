@@ -23,6 +23,14 @@ exports[`renders the Hero properly 1`] = `
         data-slide-to="2"
         data-target="#carouselExampleCaptions"
       />
+      <li
+        data-slide-to="3"
+        data-target="#carouselExampleCaptions"
+      />
+      <li
+        data-slide-to="4"
+        data-target="#carouselExampleCaptions"
+      />
     </ol>
     <div
       className="carousel-inner"
@@ -32,8 +40,13 @@ exports[`renders the Hero properly 1`] = `
       >
         <img
           alt="carosel"
-          className="d-block w-100"
+          className="d-none d-md-block w-100"
           src="images/img7.jpg"
+        />
+        <img
+          alt="carosel"
+          className="d-block d-md-none w-100"
+          src="images/img7square.jpg"
         />
         <div
           className="carousel-caption d-none d-md-block"
@@ -56,14 +69,19 @@ exports[`renders the Hero properly 1`] = `
       >
         <img
           alt="carosel"
-          className="d-block w-100"
-          src="images/img3.jpg"
+          className="d-none d-md-block w-100"
+          src="images/img8.jpg"
+        />
+        <img
+          alt="carosel"
+          className="d-block d-md-none w-100"
+          src="images/img8square.jpg"
         />
         <div
           className="carousel-caption d-none d-md-block"
         >
           <h2>
-            Fun-Filled Stays
+            Brunch with Reel Cinemas
           </h2>
           <p>
             at Address Hotels + Resorts
@@ -80,8 +98,13 @@ exports[`renders the Hero properly 1`] = `
       >
         <img
           alt="carosel"
-          className="d-block w-100"
+          className="d-none d-md-block w-100"
           src="images/img5.jpg"
+        />
+        <img
+          alt="carosel"
+          className="d-block d-md-none w-100"
+          src="images/img5square.jpg"
         />
         <div
           className="carousel-caption d-none d-md-block"
@@ -91,6 +114,64 @@ exports[`renders the Hero properly 1`] = `
           </h2>
           <p>
             Get 2 complimentary tickets to the world’s greatest show when you book with us.
+          </p>
+          <button
+            className="sc-bdfBQB bSgpNk"
+          >
+            Learn More
+          </button>
+        </div>
+      </div>
+      <div
+        className="carousel-item"
+      >
+        <img
+          alt="carosel"
+          className="d-none d-md-block w-100"
+          src="images/img9.jpg"
+        />
+        <img
+          alt="carosel"
+          className="d-block d-md-none w-100"
+          src="images/img9square.jpg"
+        />
+        <div
+          className="carousel-caption d-none d-md-block"
+        >
+          <h2>
+            Longer Getaways
+          </h2>
+          <p>
+            at Address Hotels + Resorts
+          </p>
+          <button
+            className="sc-bdfBQB bSgpNk"
+          >
+            Learn More
+          </button>
+        </div>
+      </div>
+      <div
+        className="carousel-item"
+      >
+        <img
+          alt="carosel"
+          className="d-none d-md-block w-100"
+          src="images/img3.jpg"
+        />
+        <img
+          alt="carosel"
+          className="d-block d-md-none w-100"
+          src="images/img3square.jpg"
+        />
+        <div
+          className="carousel-caption d-none d-md-block"
+        >
+          <h2>
+            Fun-Filled Stays
+          </h2>
+          <p>
+            at Address Hotels + Resorts
           </p>
           <button
             className="sc-bdfBQB bSgpNk"

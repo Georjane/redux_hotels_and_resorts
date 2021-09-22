@@ -8,7 +8,7 @@ import Details from './components/Details';
 import Favorites from './components/Favorites';
 import Home from './components/Home';
 import Login from './components/Login';
-import Footer from './components/Footer';
+// import Footer from './components/Footer';
 import { ISLOGGEDIN } from './actions';
 
 const Routes = () => {
@@ -27,7 +27,7 @@ const Routes = () => {
         <Route exact path="/favorites" component={Favorites} />
         <Route exact path="/details" component={Details} />
       </Switch>
-      <Footer />
+      {/* <Footer /> */}
     </BrowserRouter>
   );
 };
