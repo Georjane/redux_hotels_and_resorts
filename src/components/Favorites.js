@@ -20,7 +20,7 @@ function Favorites(props) {
         const myfavorites = [];
         res.data.forEach((fav) => {
           hotels.forEach((hotel) => {
-            if (fav.user_id === id && fav.hotel_id === hotel.id) {
+            if (fav.user_id.toString() === id && fav.hotel_id === hotel.id) {
               myfavorites.push(hotel);
             }
           });

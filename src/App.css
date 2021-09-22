@@ -247,7 +247,8 @@ input:focus {
 }
 
 .dpage .fixed p,
-.dpage .fixed a {
+.dpage .fixed a,
+.dpage .fixed span {
   color: black;
 }
 
@@ -259,7 +260,8 @@ input:focus {
 }
 
 .favorites .fixed p,
-.favorites .fixed a {
+.favorites .fixed a,
+.favorites .fixed span {
   color: black;
 }
 
