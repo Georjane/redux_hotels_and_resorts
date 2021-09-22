@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom';
 import { SIGNUP } from '../actions';
 import Hero from './Hero';
 import Navbar from './Navbar';
-import Footer from './Footer';
 
 function App(props) {
   const { state } = props;
@@ -78,7 +77,6 @@ function App(props) {
           </span>
         </form>
       </div>
-      <Footer />
     </div>
   );
 }
