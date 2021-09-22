@@ -9,7 +9,7 @@ import Hero from './Hero';
 
 function Login(props) {
   const { state } = props;
-  const { isLoggedIn, hasSignedUp } = state;
+  const { isLoggedIn } = state;
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const Button = styled.button`
@@ -31,7 +31,6 @@ function Login(props) {
     LOGIN({
       username, password,
     });
-      <Redirect to="/home" />;
   };
 
   if (isLoggedIn === true) {
@@ -41,11 +40,11 @@ function Login(props) {
       </div>
     );
   }
-  if (hasSignedUp === false) {
-    return (
-      <Redirect to="/register" />
-    );
-  }
+  // if (hasSignedUp === false) {
+  //   return (
+  //     <Redirect to="/register" />
+  //   );
+  // }
   return (
     <div>
       <div className="gradient" />

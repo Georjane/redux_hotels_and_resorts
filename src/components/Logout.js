@@ -8,11 +8,13 @@ import { LOGOUT } from '../actions';
 
 const Logout = (props) => {
   const [navbar, setNavbar] = useState(false);
-
-  const handleLogout = () => {
+  const { state } = props;
+  const { isLoggedIn } = state;
+  const handleLogout = (e) => {
+    e.preventDefault();
     const { LOGOUT } = props;
     LOGOUT();
-      <Redirect to="/login" />;
+    // try using push here instead of redirect
   };
   const changeBackground = () => {
     if (window.scrollY >= 100) {
@@ -35,6 +37,14 @@ const Logout = (props) => {
   outline: none;
   margin-right: 12px;
 `;
+
+  if (isLoggedIn === false) {
+    return (
+      <div>
+        <Redirect to="/login" />
+      </div>
+    );
+  }
 
   return (
     <nav className={navbar ? 'navbar navbar-expand-lg bglight fixed active' : 'navbar navbar-expand-lg bglight fixed'}>
@@ -96,7 +106,7 @@ const Logout = (props) => {
           </li>
         </ul>
         <div>
-          <a href="login"><Button type="button" onClick={handleLogout}>Log Out</Button></a>
+          <a href="login"><Button type="submit" onClick={handleLogout}>Log Out</Button></a>
         </div>
         <form className="form-inline my-2 my-lg-0">
           <input className="form-control mr-sm-2 transparent" type="search" placeholder="Search" aria-label="Search" />
@@ -107,6 +117,7 @@ const Logout = (props) => {
 };
 
 Logout.propTypes = {
+  state: PropTypes.objectOf(PropTypes.any).isRequired,
   LOGOUT: PropTypes.func.isRequired,
 };
 

@@ -36,16 +36,22 @@ function App(props) {
       username, email, password, passwordConfirmation,
     });
     props.history.push('./home');
-      <Redirect to="/home" />;
+    // <Redirect to="/home" />;
   };
+  if (isLoggedIn === true) {
+    return (
+      <div>
+        <Redirect to="/home" />
+      </div>
+    );
+  }
+  // const checkLogin = () => {
+  //   const { ISLOGGEDIN } = props;
+  //   ISLOGGEDIN();
+  //   console.log('checking');
+  // };
 
-  const checkLogin = () => {
-    const { ISLOGGEDIN } = props;
-    ISLOGGEDIN();
-    console.log('checking');
-  };
-
-  console.log(checkLogin());
+  // console.log(checkLogin());
 
   return (
     <div>
@@ -82,7 +88,7 @@ App.propTypes = {
   isLoggedIn: PropTypes.objectOf(PropTypes.any).isRequired,
   state: PropTypes.objectOf(PropTypes.any).isRequired,
   SIGNUP: PropTypes.func.isRequired,
-  ISLOGGEDIN: PropTypes.func.isRequired,
+  // ISLOGGEDIN: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({

@@ -7,7 +7,6 @@ import styled from 'styled-components';
 function Hotels(props) {
   const { handleAddFavs } = props;
   const id = sessionStorage.getItem('user_id');
-  // const { id, username } = user[0];
   const [hotels, setHotels] = useState([]);
   const Button = styled.button`
   background-color: #E7522B; 
