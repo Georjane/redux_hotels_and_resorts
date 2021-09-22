@@ -3,6 +3,7 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import { SIGNUP, ISLOGGEDIN } from '../actions';
 import Hero from './Hero';
 import Navbar from './Navbar';
@@ -76,7 +77,13 @@ function App(props) {
           <span>
             Have an account already?
             {' '}
-            <a href="/login">Sign In</a>
+            <Link
+              to={{
+                pathname: '/login',
+              }}
+            >
+              Log In
+            </Link>
           </span>
         </form>
       </div>

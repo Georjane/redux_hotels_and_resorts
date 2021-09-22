@@ -106,7 +106,7 @@ const Logout = (props) => {
           </li>
         </ul>
         <div>
-          <a href="login"><Button type="submit" onClick={handleLogout}>Log Out</Button></a>
+          <Button type="submit" onClick={handleLogout}>Log Out</Button>
         </div>
         <form className="form-inline my-2 my-lg-0">
           <input className="form-control mr-sm-2 transparent" type="search" placeholder="Search" aria-label="Search" />

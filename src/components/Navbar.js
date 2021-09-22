@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [navbar, setNavbar] = useState(false);
@@ -32,32 +33,61 @@ const Navbar = () => {
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
         <span id="menu-span" className="navbar-toggler-icon menu-bar"><i className="fa fa-bars" /></span>
       </button>
-      <a className="navbar-brand white logo" href="/register">
-        <img src="images/logo.png" className="w-25" alt="carosel" />
-        <p>
-          Address
-          <br />
-          Hotels & Resorts
-        </p>
-      </a>
-
+      <Link
+        to={{
+          pathname: '/register',
+        }}
+      >
+        <span className="navbar-brand white logo" href="/register">
+          <img src="images/logo.png" className="w-25" alt="carosel" />
+          <p>
+            Address
+            <br />
+            Hotels & Resorts
+          </p>
+        </span>
+      </Link>
       <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
         <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
           <li className="nav-item">
-            <a className="nav-link white" href="/register">
-              Residences
-              <span className="sr-only">(current)</span>
-            </a>
+            <Link
+              to={{
+                pathname: '/register',
+              }}
+            >
+              <span className="nav-link white">
+                Residences
+                <span className="sr-only">(current)</span>
+              </span>
+            </Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link white" href="/register">Dinning</a>
+            <Link
+              to={{
+                pathname: '/register',
+              }}
+            >
+              <span className="nav-link white">Dinning</span>
+            </Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link white" href="/register" tabIndex="-1" aria-disabled="true">Events</a>
+            <Link
+              to={{
+                pathname: '/register',
+              }}
+            >
+              <span className="nav-link white" tabIndex="-1" aria-disabled="true">Events</span>
+            </Link>
           </li>
         </ul>
         <div>
-          <a href="login"><Button>Sign In</Button></a>
+          <Link
+            to={{
+              pathname: '/login',
+            }}
+          >
+            <span className="nav-link white"><Button>Sign In</Button></span>
+          </Link>
         </div>
         <form className="form-inline my-2 my-lg-0">
           <input className="form-control mr-sm-2 transparent" type="search" placeholder="Search" aria-label="Search" />

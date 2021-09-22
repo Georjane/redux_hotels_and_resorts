@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { LOGIN } from '../actions';
 import Navbar from './Navbar';
@@ -63,7 +64,13 @@ function Login(props) {
           <Button type="submit">Log In</Button>
           <span>Address Hotels & Resorts</span>
           <span>
-            <a href="/register">Register</a>
+            <Link
+              to={{
+                pathname: '/register',
+              }}
+            >
+              Sign Up
+            </Link>
             {' '}
             if you do not have an account
           </span>
