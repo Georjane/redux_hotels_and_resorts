@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import App from './components/App';
 import Details from './components/Details';
 import Favorites from './components/Favorites';
@@ -16,6 +18,7 @@ const Routes = () => {
   });
   return (
     <BrowserRouter>
+      <ToastContainer autoclose={10000} />
       <Switch>
         <Route exact path="/" component={App} />
         <Route exact path="/register" component={App} />

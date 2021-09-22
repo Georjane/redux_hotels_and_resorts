@@ -3,16 +3,18 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import styled from 'styled-components';
-import { LOGIN } from '../actions';
+import { LOGIN, RESET_TOAST } from '../actions';
 import Navbar from './Navbar';
 import Hero from './Hero';
 
 function Login(props) {
   const { state } = props;
-  const { isLoggedIn } = state;
+  const { isLoggedIn, loginErr } = state;
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
   const Button = styled.button`
   background-color: #E7522B; 
   padding: 12px 0; 
@@ -34,18 +36,20 @@ function Login(props) {
     });
   };
 
+  if (loginErr === true) {
+    toast.error('Invalid credentials');
+    const { RESET_TOAST } = props;
+    RESET_TOAST();
+  }
+
   if (isLoggedIn === true) {
+    toast.success('Login successfully!');
     return (
       <div>
         <Redirect to="/home" />
       </div>
     );
   }
-  // if (hasSignedUp === false) {
-  //   return (
-  //     <Redirect to="/register" />
-  //   );
-  // }
   return (
     <div>
       <div className="gradient" />
@@ -59,7 +63,18 @@ function Login(props) {
             Resort can now experience an exclusive Floating
             Breakfast at the worlds highest outdoor infinity pool.
           </span>
-          <input id="transparent" onChange={(e) => setUsername(e.target.value)} type="text" name="username" placeholder="Username" value={username} required />
+          <input
+            id="transparent"
+            onChange={(e) => {
+              e.preventDefault();
+              setUsername(e.target.value);
+            }}
+            type="text"
+            name="username"
+            placeholder="Username"
+            value={username}
+            required
+          />
           <input onChange={(e) => setPassword(e.target.value)} type="password" name="password" placeholder="Password" value={password} required />
           <Button type="submit">Log In</Button>
           <span>Address Hotels & Resorts</span>
@@ -83,6 +98,7 @@ function Login(props) {
 Login.propTypes = {
   state: PropTypes.objectOf(PropTypes.any).isRequired,
   LOGIN: PropTypes.func.isRequired,
+  RESET_TOAST: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -91,6 +107,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   LOGIN: (username) => { dispatch(LOGIN(username)); },
+  RESET_TOAST: () => { dispatch(RESET_TOAST()); },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

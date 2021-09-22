@@ -46,6 +46,7 @@ function App(props) {
       </div>
     );
   }
+
   // const checkLogin = () => {
   //   const { ISLOGGEDIN } = props;
   //   ISLOGGEDIN();

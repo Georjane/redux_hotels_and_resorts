@@ -3,18 +3,18 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import PropTypes from 'prop-types';
 import { LOGOUT } from '../actions';
 
 const Logout = (props) => {
   const [navbar, setNavbar] = useState(false);
   const { state } = props;
-  const { isLoggedIn } = state;
+  const { isLoggedIn, logout } = state;
   const handleLogout = (e) => {
     e.preventDefault();
     const { LOGOUT } = props;
     LOGOUT();
-    // try using push here instead of redirect
   };
   const changeBackground = () => {
     if (window.scrollY >= 100) {
@@ -37,6 +37,10 @@ const Logout = (props) => {
   outline: none;
   margin-right: 12px;
 `;
+
+  if (logout === true) {
+    toast.success('Logged out successfully!');
+  }
 
   if (isLoggedIn === false) {
     return (

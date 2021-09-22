@@ -18,6 +18,10 @@ export const ISLOGGEDIN = () => ({
   type: 'ISLOGGEDIN',
 });
 
+export const RESET_TOAST = () => ({
+  type: 'RESET_TOAST',
+});
+
 export const LOGOUT = () => ({
   type: 'LOGOUT',
   payload: {
