@@ -1,16 +1,17 @@
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router';
+// import { Redirect } from 'react-router';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { toast } from 'react-toastify';
+// import { toast } from 'react-toastify';
 import PropTypes from 'prop-types';
 import { LOGOUT } from '../actions';
 
 const Logout = (props) => {
   const [navbar, setNavbar] = useState(false);
   const { state } = props;
-  const { isLoggedIn, logout } = state;
+  console.log(state);
+  // const { isLoggedIn, logout } = state;
   const handleLogout = (e) => {
     e.preventDefault();
     const { LOGOUT } = props;
@@ -38,17 +39,17 @@ const Logout = (props) => {
   margin-right: 12px;
 `;
 
-  if (logout === true) {
-    toast.success('You are loggout out');
-  }
+  // if (logout === true) {
+  //   toast.success('You are loggout out');
+  // }
 
-  if (isLoggedIn === false) {
-    return (
-      <div>
-        <Redirect to="/login" />
-      </div>
-    );
-  }
+  // if (isLoggedIn === false) {
+  //   return (
+  //     <div>
+  //       <Redirect to="/login" />
+  //     </div>
+  //   );
+  // }
 
   return (
     <nav className={navbar ? 'navbar navbar-expand-lg bglight fixed active' : 'navbar navbar-expand-lg bglight fixed'}>

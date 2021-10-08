@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-// import { toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import styled from 'styled-components';
 import { LOGIN, RESET_TOAST } from '../actions';
 import Navbar from './Navbar';
@@ -11,13 +11,9 @@ import Hero from './Hero';
 
 function Login(props) {
   const { state } = props;
-  const { isLoggedIn } = state;
-  console.log(isLoggedIn);
-  const token = sessionStorage.getItem('token');
-  console.log(token);
+  const { isLoggedIn, loginErr } = state;
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  // const [loading, setLoading] = useState(false);
 
   const Button = styled.button`
   background-color: #E7522B; 
@@ -34,29 +30,27 @@ function Login(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // setLoading(true);
     const { LOGIN } = props;
     LOGIN({
       username, password,
     });
-    // props.history.push('/home');
   };
 
-  // if (loginErr === true) {
-  //   toast.error('Invalid credentials');
-  //   const { RESET_TOAST } = props;
-  //   RESET_TOAST();
-  // }
+  if (loginErr === true) {
+    toast.error('Invalid credentials');
+    const { RESET_TOAST } = props;
+    RESET_TOAST();
+  }
 
-  // if (token) {
-  //   toast.success('Login successfully!');
-  //   return (
-  //     <div>
-  //       <Redirect to="/home" />
-  //     </div>
-  //   );
-  // }
-  return token === null ? (
+  if (isLoggedIn === true) {
+    toast.success('Login successfully!');
+    return (
+      <div>
+        <Redirect to="/home" />
+      </div>
+    );
+  }
+  return (
     <div>
       <div className="gradient" />
       <Navbar />
@@ -99,15 +93,12 @@ function Login(props) {
       </div>
       <div className="formoverlay" />
     </div>
-  ) : (
-    <Redirect to="/home" />
   );
 }
 Login.propTypes = {
   state: PropTypes.objectOf(PropTypes.any).isRequired,
   LOGIN: PropTypes.func.isRequired,
-  // history: PropTypes.objectOf(PropTypes.any).isRequired,
-  // RESET_TOAST: PropTypes.func.isRequired,
+  RESET_TOAST: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({

@@ -8,6 +8,7 @@ function Hotels(props) {
   const { handleAddFavs } = props;
   const id = sessionStorage.getItem('user_id');
   const token = sessionStorage.getItem('token');
+  console.log(token);
   const [hotels, setHotels] = useState([]);
   const Button = styled.button`
   background-color: #E7522B; 

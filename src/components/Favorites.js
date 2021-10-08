@@ -1,16 +1,16 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Redirect } from 'react-router';
+// import { Redirect } from 'react-router';
 import { useHistory } from 'react-router-dom';
 import Logout from './Logout';
 
 function Favorites(props) {
   const { location } = props;
   const { userInfo } = location;
-  if (userInfo === undefined) {
-    return <Redirect to="/login" />;
-  }
+  // if (userInfo === undefined) {
+  //   return <Redirect to="/login" />;
+  // }
   const token = sessionStorage.getItem('token');
   const history = useHistory();
   const { id, hotels } = userInfo;

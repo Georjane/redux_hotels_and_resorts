@@ -8,9 +8,12 @@ import { SIGNUP } from '../actions';
 import Hero from './Hero';
 import Navbar from './Navbar';
 
-function App(props) {
+function Register(props) {
   const { state } = props;
   const { isLoggedIn } = state;
+  console.log(isLoggedIn);
+  const token = sessionStorage.getItem('token');
+  console.log(token);
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -34,17 +37,19 @@ function App(props) {
     SIGNUP({
       username, email, password, passwordConfirmation,
     });
-    props.history.push('./home');
+    // props.history.push('./home');
+    // // history.push("/profile");
+    // window.location.reload();
   };
-  if (isLoggedIn === true) {
-    return (
-      <div>
-        <Redirect to="/home" />
-      </div>
-    );
-  }
+  // if (token) {
+  //   return (
+  //     <div>
+  //       <Redirect to="/login" />
+  //     </div>
+  //   );
+  // }
 
-  return (
+  return token === null ? (
     <div>
       <div className="gradient" />
       <Navbar />
@@ -78,10 +83,12 @@ function App(props) {
         </form>
       </div>
     </div>
+  ) : (
+    <Redirect to="/home" />
   );
 }
-App.propTypes = {
-  history: PropTypes.objectOf(PropTypes.any).isRequired,
+Register.propTypes = {
+  // history: PropTypes.objectOf(PropTypes.any).isRequired,
   isLoggedIn: PropTypes.objectOf(PropTypes.any).isRequired,
   state: PropTypes.objectOf(PropTypes.any).isRequired,
   SIGNUP: PropTypes.func.isRequired,
@@ -95,4 +102,4 @@ const mapDispatchToProps = (dispatch) => ({
   SIGNUP: (username) => { dispatch(SIGNUP(username)); },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(Register);
