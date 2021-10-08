@@ -21,12 +21,17 @@ class AuthService {
   }
 
   register(username, email, password, passwordConfirmation) {
-    return axios.post(API_URL + "registrations", {
+    return axios.post(API_URL + "registrations",{
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      user: {
       username,
       email,
       password,
       passwordConfirmation
-    });
+    }});
   }
 }
 
