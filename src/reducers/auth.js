@@ -21,6 +21,7 @@ const rootReducer = (state = initialState, action) => {
     }
     case 'ISLOGGEDIN': {
       if (sessionStorage.getItem('user_id')) {
+        console.log('nnnnnnnnnnnnnnnnnn');
         const newState = {
           ...state, isLoggedIn: true,
         };
@@ -29,7 +30,7 @@ const rootReducer = (state = initialState, action) => {
       return state;
     }
     case 'SIGNUP': {
-      if (action.payload.status === 'created') {
+      if (!action.err) {
         const { user } = action.payload.user;
         sessionStorage.setItem('user_id', action.payload.user.id);
         const newState = {
@@ -37,22 +38,40 @@ const rootReducer = (state = initialState, action) => {
         };
         return newState;
       }
-      return state;
+      const newState = {
+        ...state, isLoggedIn: true, loginErr: true,
+      };
+      return newState;
     }
     case 'LOGIN': {
       const { user } = action.payload;
-      if (action.payload.status === 'created') {
-        sessionStorage.setItem('user_id', user.id);
-        const newState = {
-          ...state, isLoggedIn: true, hasSignedUp: true, loginErr: false, users: [user],
-        };
-        return newState;
-      }
-      if (action.payload.status === 401) {
+
+      console.log(action.err);
+      if (action.err) {
         const newState = { ...state, isLoggedIn: false, loginErr: true };
         return newState;
       }
-      return state;
+      // if (action.payload !== undefined && action.payload.token) {
+      //   sessionStorage.setItem('token', action.payload.token);
+      //   sessionStorage.setItem('user_id', user.id);
+      //   const token = sessionStorage.getItem('token');
+      //   console.log(token);
+      //   const newState = {
+      //     ...state, isLoggedIn: true, hasSignedUp: true, loginErr: false, users: [user],
+      //   };
+      //   return newState;
+      // }
+      // if (action.payload.status === 401) {
+      //   const newState = { ...state, isLoggedIn: false, loginErr: true };
+      //   return newState;
+      // }
+      if (user) {
+        sessionStorage.setItem('user_id', user.id);
+      }
+      const newState = {
+        ...state, isLoggedIn: true, hasSignedUp: true, loginErr: false, users: [user],
+      };
+      return newState;
     }
     case 'LOGOUT': {
       if (action.payload.status === 200) {

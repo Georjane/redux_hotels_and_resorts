@@ -4,43 +4,60 @@ const apiMiddleware = (store) => (next) => (action) => {
   if (!action.meta || action.meta.type !== 'api') {
     return next(action);
   }
-
+  const token = sessionStorage.getItem('token');
+  // const url = 'https://redux-authentication-api.herokuapp.com/'
+  const url = 'http://localhost:3001/';
   if (action.type === 'SIGNUP') {
-    axios.post('https://redux-authentication-api.herokuapp.com/registrations', {
+    axios.post(`${url}registrations`, {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
       user: {
         username: action.payload.username,
         email: action.payload.email,
         password: action.payload.password,
         password_confirmation: action.payload.passwordConfirmation,
       },
-      withCredentials: true,
     })
       .then((data) => {
         const newActions = { ...action, payload: data.data };
+        delete newActions.meta;
+        return store.dispatch(newActions);
+      })
+      .catch((err) => {
+        const newActions = { ...action, err };
         delete newActions.meta;
         return store.dispatch(newActions);
       });
   }
 
   if (action.type === 'LOGIN') {
-    axios.post('https://redux-authentication-api.herokuapp.com/sessions', {
-      user: {
-        username: action.payload.username,
-        password: action.payload.password,
+    console.log(token);
+    axios.post(`${url}sessions`, {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
       },
-      withCredentials: true,
+      username: action.payload.username,
+      password: action.payload.password,
     })
       .then((data) => {
+        console.log(data.data);
         const newActions = { ...action, payload: data.data };
+        delete newActions.meta;
+        return store.dispatch(newActions);
+      })
+      .catch((err) => {
+        const newActions = { ...action, err };
         delete newActions.meta;
         return store.dispatch(newActions);
       });
   }
 
   if (action.type === 'LOGOUT') {
-    axios.delete('https://redux-authentication-api.herokuapp.com/logout', {
-      withCredentials: true,
-    })
+    axios.delete(`${url}logout`)
       .then((data) => {
         const newActions = { ...action, payload: data };
         delete newActions.meta;
@@ -49,7 +66,12 @@ const apiMiddleware = (store) => (next) => (action) => {
   }
 
   if (action.type === 'ADDFAV') {
-    axios.post('https://redux-authentication-api.herokuapp.com/favorites', {
+    axios.post(`${url}favorites`, {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
       user_id: action.payload.fav.user_id,
       hotel_id: action.payload.fav.hotel_id,
     })

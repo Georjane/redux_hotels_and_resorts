@@ -7,6 +7,7 @@ import styled from 'styled-components';
 function Hotels(props) {
   const { handleAddFavs } = props;
   const id = sessionStorage.getItem('user_id');
+  const token = sessionStorage.getItem('token');
   const [hotels, setHotels] = useState([]);
   const Button = styled.button`
   background-color: #E7522B; 
@@ -31,7 +32,14 @@ function Hotels(props) {
   };
 
   useEffect(() => {
-    axios.get('https://redux-authentication-api.herokuapp.com/hotels', { withCredentials: true })
+    axios.get('http://localhost:3001/hotels',
+      {
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          Authorization: `'Bearer ' + ${token}`,
+        },
+      })
       .then((res) => {
         setHotels(res.data);
       });

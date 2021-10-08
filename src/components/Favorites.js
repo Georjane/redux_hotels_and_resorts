@@ -11,11 +11,18 @@ function Favorites(props) {
   if (userInfo === undefined) {
     return <Redirect to="/login" />;
   }
+  const token = sessionStorage.getItem('token');
   const history = useHistory();
   const { id, hotels } = userInfo;
   const [favorites, setFavorites] = useState([]);
   useEffect(() => {
-    axios.get('https://redux-authentication-api.herokuapp.com/favorites', { withCredentials: true })
+    axios.get('http://localhost:3001/favorites', {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    })
       .then((res) => {
         const myfavorites = [];
         res.data.forEach((fav) => {
