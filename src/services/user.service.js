@@ -16,6 +16,10 @@ class UserService {
   getFavorites() {
     return axios.get(API_URL + 'favorites', { headers: authHeader() });
   }
+
+  // addFavorites(user_id, hotel_id) {
+  //   return axios.post(API_URL + 'favorites', { headers: authHeader() });
+  // }
 }
 
 export default new UserService();
