@@ -11,12 +11,8 @@ import Logout from './Logout';
 function Home(props) {
   const { state } = props;
   const { error, favAdded } = state;
-  console.log(state);
   const token = sessionStorage.getItem('token');
-  console.log(token);
-  // const { user: currentUser } = state;
   const handleAddFavs = (fav) => {
-    console.log('favvvv', fav);
     const { ADDFAV } = props;
     ADDFAV({
       fav,
@@ -30,9 +26,6 @@ function Home(props) {
   } else if (token && favAdded) {
     toast.success('Added Favorite successfully!');
   }
-  // if (token === undefined) {
-  //   return <Redirect to="/login" />;
-  // }
 
   return token === null ? (
     <Redirect to="/login" />

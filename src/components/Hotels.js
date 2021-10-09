@@ -7,9 +7,7 @@ import styled from 'styled-components';
 function Hotels(props) {
   const { handleAddFavs } = props;
   const id = sessionStorage.getItem('userId');
-  console.log(id);
   const token = sessionStorage.getItem('token');
-  console.log(token);
   const [hotels, setHotels] = useState([]);
   const Button = styled.button`
   background-color: #E7522B; 
@@ -29,7 +27,6 @@ function Hotels(props) {
       user_id: id,
       hotel_id: e.target.name,
     };
-    console.log('ffffffav', fav);
     handleAddFavs(fav);
     e.target.nextSibling.classList.add('hrtbtn-clicked');
   };
@@ -118,8 +115,6 @@ function Hotels(props) {
   );
 }
 Hotels.propTypes = {
-  // user: PropTypes.objectOf(PropTypes.any).isRequired,
-  // id: PropTypes.objectOf(PropTypes.any).isRequired,
   handleAddFavs: PropTypes.func.isRequired,
 };
 

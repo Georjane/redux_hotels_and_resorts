@@ -4,16 +4,18 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT,
+  ADDFAV_FAIL,
+  ADDFAV_SUCCESS,
 } from '../actions/types';
 
 const userId = sessionStorage.getItem('userId');
 
 const initialState = userId
   ? {
-    isLoggedIn: true, userId, error: '', loading: false,
+    isLoggedIn: true, userId, error: '',
   }
   : {
-    isLoggedIn: false, userId: null, error: '', loading: false,
+    isLoggedIn: false, userId: null, error: '',
   };
 
 const rootReducer = (state = initialState, action) => {
@@ -25,7 +27,6 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         isLoggedIn: true,
         userId: payload,
-        loading: false,
         error: '',
       };
     case REGISTER_FAIL:
@@ -33,7 +34,6 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         isLoggedIn: false,
         userId: null,
-        loading: false,
         error: 'Username or Email already taken!',
       };
     case LOGIN_SUCCESS:
@@ -41,7 +41,6 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         isLoggedIn: true,
         userId: payload,
-        loading: false,
         error: '',
       };
     case LOGIN_FAIL:
@@ -49,7 +48,6 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         isLoggedIn: false,
         userId: null,
-        loading: false,
         error: 'Invalid credentials!',
       };
     case LOGOUT:
@@ -57,7 +55,6 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         isLoggedIn: false,
         userId: null,
-        loading: false,
         error: 'Logged out successful!',
       };
 
@@ -69,15 +66,13 @@ const rootReducer = (state = initialState, action) => {
     case 'ADDFAV': {
       return state;
     }
-    case 'ADDFAV_SUCCESS': {
-      console.log('fav fav fav');
-      console.log(action.payload);
+    case ADDFAV_SUCCESS: {
       const newState = {
         ...state, favAdded: true,
       };
       return newState;
     }
-    case 'ADDFAV_FAIL':
+    case ADDFAV_FAIL:
       return {
         ...state,
         error: payload,

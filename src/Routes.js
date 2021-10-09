@@ -1,7 +1,5 @@
 import React from 'react';
-// import React, { useEffect } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-// import { useDispatch } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Register from './components/Register';
@@ -22,7 +20,6 @@ const Routes = () => (
       <Route exact path="/login" component={Login} />
       <Route exact path="/favorites" component={Favorites} />
       <Route exact path="/details" component={Details} />
-      {/* <Route exact path="/hotels/:id" component={Details} /> */}
     </Switch>
     <Footer />
   </BrowserRouter>

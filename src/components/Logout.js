@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-// import { Redirect } from 'react-router';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -44,17 +43,6 @@ const Logout = (props) => {
     const { RESET_TOAST } = props;
     RESET_TOAST();
   }
-  // if (logout === true) {
-  //   toast.success('You are loggout out');
-  // }
-
-  // if (isLoggedIn === false) {
-  //   return (
-  //     <div>
-  //       <Redirect to="/login" />
-  //     </div>
-  //   );
-  // }
 
   return (
     <nav className={navbar ? 'navbar navbar-expand-lg bglight fixed active' : 'navbar navbar-expand-lg bglight fixed'}>

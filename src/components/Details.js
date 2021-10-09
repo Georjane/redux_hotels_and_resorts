@@ -1,14 +1,10 @@
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
-// import { Redirect } from 'react-router';
 import Logout from './Logout';
 
 function Details(props) {
   const { location } = props;
   const { hotel } = location;
-  // if (hotel === undefined) {
-  //   return <Redirect to="/login" />;
-  // }
   const history = useHistory();
 
   return (

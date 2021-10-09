@@ -11,12 +11,8 @@ import Navbar from './Navbar';
 
 function Register(props) {
   const { state } = props;
-  const { isLoggedIn, error } = state;
-  console.log(state);
-  console.log(isLoggedIn);
-  console.log('error', error);
+  const { error } = state;
   const token = sessionStorage.getItem('token');
-  console.log(token);
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -48,20 +44,7 @@ function Register(props) {
     SIGNUP({
       username, email, password, passwordConfirmation,
     });
-    // if (error.length > 0) {
-    //   toast.error(error);
-    // }
-    // props.history.push('./home');
-    // // history.push("/profile");
-    // window.location.reload();
   };
-  // if (token) {
-  //   return (
-  //     <div>
-  //       <Redirect to="/login" />
-  //     </div>
-  //   );
-  // }
 
   return token === null ? (
     <div>
@@ -102,7 +85,6 @@ function Register(props) {
   );
 }
 Register.propTypes = {
-  // history: PropTypes.objectOf(PropTypes.any).isRequired,
   isLoggedIn: PropTypes.objectOf(PropTypes.any).isRequired,
   state: PropTypes.objectOf(PropTypes.any).isRequired,
   SIGNUP: PropTypes.func.isRequired,

@@ -14,10 +14,6 @@ export const LOGIN = (user) => ({
   },
 });
 
-export const ISLOGGEDIN = () => ({
-  type: 'ISLOGGEDIN',
-});
-
 export const RESET_TOAST = () => ({
   type: 'RESET_TOAST',
 });

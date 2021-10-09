@@ -11,13 +11,10 @@ import Hero from './Hero';
 
 function Login(props) {
   const { state } = props;
-  const { isLoggedIn, error } = state;
-  console.log(isLoggedIn);
+  const { error } = state;
   const token = sessionStorage.getItem('token');
-  console.log(token);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  // const [loading, setLoading] = useState(false);
 
   const Button = styled.button`
   background-color: #E7522B; 
@@ -34,12 +31,10 @@ function Login(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // setLoading(true);
     const { LOGIN } = props;
     LOGIN({
       username, password,
     });
-    // props.history.push('/home');
   };
 
   if (error.length > 0) {
@@ -100,7 +95,6 @@ function Login(props) {
 Login.propTypes = {
   state: PropTypes.objectOf(PropTypes.any).isRequired,
   LOGIN: PropTypes.func.isRequired,
-  // history: PropTypes.objectOf(PropTypes.any).isRequired,
   RESET_TOAST: PropTypes.func.isRequired,
 };
 
