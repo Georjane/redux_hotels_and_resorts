@@ -85,7 +85,6 @@ function Register(props) {
   );
 }
 Register.propTypes = {
-  isLoggedIn: PropTypes.objectOf(PropTypes.any).isRequired,
   state: PropTypes.objectOf(PropTypes.any).isRequired,
   SIGNUP: PropTypes.func.isRequired,
   RESET_TOAST: PropTypes.func.isRequired,

@@ -10,7 +10,6 @@ const Logout = (props) => {
   const [navbar, setNavbar] = useState(false);
   const { state } = props;
   const token = sessionStorage.getItem('token');
-  console.log(state);
   const { error } = state;
   const handleLogout = (e) => {
     e.preventDefault();
