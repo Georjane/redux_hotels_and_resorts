@@ -10,11 +10,7 @@ import Favorites from './components/Favorites';
 import Home from './components/Home';
 import Login from './components/Login';
 import Footer from './components/Footer';
-// import { ISLOGGEDIN } from './actions';
 
-const token = sessionStorage.getItem('token');
-const jane = token ? 'yupiii' : 'nooo';
-console.log(jane);
 const Routes = () => (
 
   <BrowserRouter>

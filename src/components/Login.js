@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-// import { toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import styled from 'styled-components';
 import { LOGIN, RESET_TOAST } from '../actions';
 import Navbar from './Navbar';
@@ -11,7 +11,7 @@ import Hero from './Hero';
 
 function Login(props) {
   const { state } = props;
-  const { isLoggedIn } = state;
+  const { isLoggedIn, error } = state;
   console.log(isLoggedIn);
   const token = sessionStorage.getItem('token');
   console.log(token);
@@ -42,20 +42,14 @@ function Login(props) {
     // props.history.push('/home');
   };
 
-  // if (loginErr === true) {
-  //   toast.error('Invalid credentials');
-  //   const { RESET_TOAST } = props;
-  //   RESET_TOAST();
-  // }
+  if (error.length > 0) {
+    toast.error(error);
+    const { RESET_TOAST } = props;
+    RESET_TOAST();
+  } else if (token) {
+    toast.success('Login successfully!');
+  }
 
-  // if (token) {
-  //   toast.success('Login successfully!');
-  //   return (
-  //     <div>
-  //       <Redirect to="/home" />
-  //     </div>
-  //   );
-  // }
   return token === null ? (
     <div>
       <div className="gradient" />
@@ -107,7 +101,7 @@ Login.propTypes = {
   state: PropTypes.objectOf(PropTypes.any).isRequired,
   LOGIN: PropTypes.func.isRequired,
   // history: PropTypes.objectOf(PropTypes.any).isRequired,
-  // RESET_TOAST: PropTypes.func.isRequired,
+  RESET_TOAST: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({

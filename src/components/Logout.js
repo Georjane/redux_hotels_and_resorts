@@ -3,15 +3,16 @@ import { connect } from 'react-redux';
 // import { Redirect } from 'react-router';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-// import { toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import PropTypes from 'prop-types';
-import { LOGOUT } from '../actions';
+import { LOGOUT, RESET_TOAST } from '../actions';
 
 const Logout = (props) => {
   const [navbar, setNavbar] = useState(false);
   const { state } = props;
+  const token = sessionStorage.getItem('token');
   console.log(state);
-  // const { isLoggedIn, logout } = state;
+  const { error } = state;
   const handleLogout = (e) => {
     e.preventDefault();
     const { LOGOUT } = props;
@@ -38,7 +39,11 @@ const Logout = (props) => {
   outline: none;
   margin-right: 12px;
 `;
-
+  if (error.length > 0 && token === null) {
+    toast.success(error);
+    const { RESET_TOAST } = props;
+    RESET_TOAST();
+  }
   // if (logout === true) {
   //   toast.success('You are loggout out');
   // }
@@ -124,6 +129,7 @@ const Logout = (props) => {
 Logout.propTypes = {
   state: PropTypes.objectOf(PropTypes.any).isRequired,
   LOGOUT: PropTypes.func.isRequired,
+  RESET_TOAST: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -132,6 +138,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   LOGOUT: () => { dispatch(LOGOUT()); },
+  RESET_TOAST: () => { dispatch(RESET_TOAST()); },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Logout);

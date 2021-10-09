@@ -2,24 +2,34 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router';
 import PropTypes from 'prop-types';
+import { toast } from 'react-toastify';
 import Hotels from './Hotels';
-import { ADDFAV } from '../actions';
+import { ADDFAV, RESET_TOAST } from '../actions';
 import Hero from './Hero';
 import Logout from './Logout';
 
 function Home(props) {
   const { state } = props;
+  const { error, favAdded } = state;
   console.log(state);
   const token = sessionStorage.getItem('token');
   console.log(token);
   // const { user: currentUser } = state;
   const handleAddFavs = (fav) => {
+    console.log('favvvv', fav);
     const { ADDFAV } = props;
     ADDFAV({
       fav,
     });
   };
 
+  if (error.length > 0) {
+    toast.error(error);
+    const { RESET_TOAST } = props;
+    RESET_TOAST();
+  } else if (token && favAdded) {
+    toast.success('Added Favorite successfully!');
+  }
   // if (token === undefined) {
   //   return <Redirect to="/login" />;
   // }
@@ -39,6 +49,7 @@ function Home(props) {
 Home.propTypes = {
   state: PropTypes.objectOf(PropTypes.any).isRequired,
   ADDFAV: PropTypes.func.isRequired,
+  RESET_TOAST: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -47,6 +58,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   ADDFAV: (fav) => { dispatch(ADDFAV(fav)); },
+  RESET_TOAST: () => { dispatch(RESET_TOAST()); },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

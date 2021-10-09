@@ -5,6 +5,8 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT,
+  ADDFAV_FAIL,
+  ADDFAV_SUCCESS,
   // SET_MESSAGE,
 } from '../actions/types';
 // import AuthService from '../services/auth.service';
@@ -14,6 +16,7 @@ const apiMiddleware = (store) => (next) => (action) => {
     return next(action);
   }
   const token = sessionStorage.getItem('token');
+  // const userId = sessionStorage.getItem('userId');
   // const url = 'https://redux-authentication-api.herokuapp.com/'
   const url = 'http://localhost:3001/';
   if (action.type === 'SIGNUP') {
@@ -37,13 +40,19 @@ const apiMiddleware = (store) => (next) => (action) => {
       },
     })
       .then((data) => {
-        console.log(data);
-        const newActions = { ...action, type: REGISTER_SUCCESS, payload: data.data };
+        console.log('register success midle ware');
+        const newActions = { ...action, type: REGISTER_SUCCESS, payload: data.data.id };
+
         delete newActions.meta;
+        sessionStorage.setItem('token', data.data.token);
+        sessionStorage.setItem('userId', data.data.id);
+        console.log(sessionStorage.getItem('token'));
+        window.location.href = '/home';
         return store.dispatch(newActions);
       })
-      .catch((err) => {
-        const newActions = { ...action, type: REGISTER_FAIL, payload: err.data };
+      .catch(() => {
+        console.log('register fail midle ware');
+        const newActions = { ...action, type: REGISTER_FAIL, payload: 'error' };
         delete newActions.meta;
         return store.dispatch(newActions);
       });
@@ -65,43 +74,49 @@ const apiMiddleware = (store) => (next) => (action) => {
         const newActions = { ...action, type: LOGIN_SUCCESS, payload: data.data };
         delete newActions.meta;
         sessionStorage.setItem('token', data.data.token);
-        sessionStorage.setItem('user_id', data.data.id);
+        sessionStorage.setItem('userId', data.data.id);
         window.location.href = '/home';
         return store.dispatch(newActions);
       })
-      .catch((err) => {
-        const newActions = { ...action, type: LOGIN_FAIL, payload: err.data };
+      .catch(() => {
+        console.log('register fail midle ware');
+        const newActions = { ...action, type: LOGIN_FAIL, payload: 'error' };
         delete newActions.meta;
         return store.dispatch(newActions);
       });
   }
 
   if (action.type === 'LOGOUT') {
-    // axios.delete(`${url}logout`)
-    // AuthService.logout();
-    console.log('middleware logout');
+    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('userId');
     const newActions = { ...action, type: LOGOUT };
+    window.location.href = '/home';
     delete newActions.meta;
     return store.dispatch(newActions);
-    // .then((data) => {
-    //   const newActions = { ...action, payload: data };
-    //   delete newActions.meta;
-    //   return store.dispatch(newActions);
-    // });
   }
 
   if (action.type === 'ADDFAV') {
-    axios.post(`${url}favorites`, {
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
-      },
-      user_id: action.payload.fav.user_id,
-      hotel_id: action.payload.fav.hotel_id,
-    })
+    console.log('fav here');
+    const headers = {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      Authorization: `'Bearer ' + ${token}`,
+    };
+    const data = { user_id: action.payload.fav.user_id, hotel_id: action.payload.fav.hotel_id };
+    axios.post(`${url}favorites`,
+      data,
+      {
+        headers,
+      })
       .then((data) => {
-        const newActions = { ...action, payload: data };
+        console.log('daaaaaaaaa', data);
+        const newActions = { ...action, type: ADDFAV_SUCCESS, payload: data };
+        delete newActions.meta;
+        return store.dispatch(newActions);
+      })
+      .catch(() => {
+        console.log('register fail midle ware');
+        const newActions = { ...action, type: ADDFAV_FAIL, payload: 'You already have it in your list of favourites' };
         delete newActions.meta;
         return store.dispatch(newActions);
       });

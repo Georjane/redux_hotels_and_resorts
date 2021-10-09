@@ -2,16 +2,19 @@ import { connect } from 'react-redux';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router';
+import { toast } from 'react-toastify';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { SIGNUP } from '../actions';
+import { SIGNUP, RESET_TOAST } from '../actions';
 import Hero from './Hero';
 import Navbar from './Navbar';
 
 function Register(props) {
   const { state } = props;
-  const { isLoggedIn } = state;
+  const { isLoggedIn, error } = state;
+  console.log(state);
   console.log(isLoggedIn);
+  console.log('error', error);
   const token = sessionStorage.getItem('token');
   console.log(token);
   const [username, setUsername] = useState('');
@@ -31,12 +34,23 @@ function Register(props) {
   z-index: 5;
 `;
 
+  if (error.length > 0) {
+    toast.error(error);
+    const { RESET_TOAST } = props;
+    RESET_TOAST();
+  } else if (token) {
+    toast.success('Login successfully!');
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const { SIGNUP } = props;
     SIGNUP({
       username, email, password, passwordConfirmation,
     });
+    // if (error.length > 0) {
+    //   toast.error(error);
+    // }
     // props.history.push('./home');
     // // history.push("/profile");
     // window.location.reload();
@@ -92,6 +106,7 @@ Register.propTypes = {
   isLoggedIn: PropTypes.objectOf(PropTypes.any).isRequired,
   state: PropTypes.objectOf(PropTypes.any).isRequired,
   SIGNUP: PropTypes.func.isRequired,
+  RESET_TOAST: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -100,6 +115,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   SIGNUP: (username) => { dispatch(SIGNUP(username)); },
+  RESET_TOAST: () => { dispatch(RESET_TOAST()); },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Register);

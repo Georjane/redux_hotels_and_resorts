@@ -6,7 +6,8 @@ import styled from 'styled-components';
 
 function Hotels(props) {
   const { handleAddFavs } = props;
-  const id = sessionStorage.getItem('user_id');
+  const id = sessionStorage.getItem('userId');
+  console.log(id);
   const token = sessionStorage.getItem('token');
   console.log(token);
   const [hotels, setHotels] = useState([]);
@@ -28,6 +29,7 @@ function Hotels(props) {
       user_id: id,
       hotel_id: e.target.name,
     };
+    console.log('ffffffav', fav);
     handleAddFavs(fav);
     e.target.nextSibling.classList.add('hrtbtn-clicked');
   };
@@ -72,7 +74,7 @@ function Hotels(props) {
             </div>
             <div className="col-md-6">
               <div className="card-body">
-                <h5 className="card-title"><h2>{hotel.title}</h2></h5>
+                <h2 className="card-title">{hotel.title}</h2>
                 <p className="card-text">{hotel.description}</p>
                 <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
                 <p className="card-text">
@@ -103,7 +105,7 @@ function Hotels(props) {
                 </p>
                 <p className="card-text">
                   <span className="hrtdiv">
-                    <button type="button" className="hrtbtn addfavs" onClick={handleAddFavorite} name={hotel.id}>Add to Favorites</button>
+                    <button type="submit" className="hrtbtn addfavs" onClick={handleAddFavorite} name={hotel.id}>Add to Favorites</button>
                     <i className="fa fa-heart heart" />
                   </span>
                 </p>
