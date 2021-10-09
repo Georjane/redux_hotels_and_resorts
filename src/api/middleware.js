@@ -14,8 +14,7 @@ const apiMiddleware = (store) => (next) => (action) => {
     return next(action);
   }
   const token = sessionStorage.getItem('token');
-  // const url = 'https://redux-authentication-api.herokuapp.com/'
-  const url = 'http://localhost:3001/';
+  const url = 'https://redux-authentication-api.herokuapp.com/';
   if (action.type === 'SIGNUP') {
     axios.post(`${url}registrations`, {
       headers: {
