@@ -32,7 +32,7 @@ function Hotels(props) {
   };
 
   useEffect(() => {
-    axios.get('http://localhost:3001/hotels',
+    axios.get('https://redux-authentication-api.herokuapp.com/hotels',
       {
         headers: {
           Accept: 'application/json',

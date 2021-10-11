@@ -14,7 +14,7 @@ const apiMiddleware = (store) => (next) => (action) => {
     return next(action);
   }
   const token = sessionStorage.getItem('token');
-  const url = 'http://localhost:3001/';
+  const url = 'https://redux-authentication-api.herokuapp.com/';
   if (action.type === 'SIGNUP') {
     const headers = {
       Accept: 'application/json',
