@@ -38,7 +38,8 @@ const Logout = (props) => {
   margin-right: 12px;
 `;
   if (error.length > 0 && token === null) {
-    toast.success(error);
+    const message = error;
+    toast.success(message);
     const { RESET_TOAST } = props;
     RESET_TOAST();
   }
