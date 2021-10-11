@@ -14,20 +14,23 @@ const apiMiddleware = (store) => (next) => (action) => {
     return next(action);
   }
   const token = sessionStorage.getItem('token');
-  const url = 'https://redux-authentication-api.herokuapp.com/';
+  const url = 'http://localhost:3001/';
   if (action.type === 'SIGNUP') {
-    axios.post(`${url}registrations`, {
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      user: {
-        username: action.payload.username,
-        email: action.payload.email,
-        password: action.payload.password,
-        password_confirmation: action.payload.passwordConfirmation,
-      },
-    })
+    const headers = {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    };
+    const user = {
+      username: action.payload.username,
+      email: action.payload.email,
+      password: action.payload.password,
+      password_confirmation: action.payload.passwordConfirmation,
+    };
+    axios.post(`${url}registrations`,
+      { user },
+      {
+        headers,
+      })
       .then((data) => {
         const newActions = { ...action, type: REGISTER_SUCCESS, payload: data.data.id };
         delete newActions.meta;
@@ -44,14 +47,17 @@ const apiMiddleware = (store) => (next) => (action) => {
   }
 
   if (action.type === 'LOGIN') {
-    axios.post(`${url}sessions`, {
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      username: action.payload.username,
-      password: action.payload.password,
-    })
+    const headers = {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      Authorization: `'Bearer ' + ${token}`,
+    };
+    const data = { username: action.payload.username, password: action.payload.password };
+    axios.post(`${url}sessions`,
+      data,
+      {
+        headers,
+      })
       .then((data) => {
         const newActions = { ...action, type: LOGIN_SUCCESS, payload: data.data };
         delete newActions.meta;

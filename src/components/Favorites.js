@@ -12,12 +12,13 @@ function Favorites(props) {
   const { id, hotels } = userInfo;
   const [favorites, setFavorites] = useState([]);
   useEffect(() => {
-    axios.get('https://redux-authentication-api.herokuapp.com/favorites', {
+    axios.get('http://localhost:3001/favorites', {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
       },
+      mode: 'cors',
     })
       .then((res) => {
         const myfavorites = [];
