@@ -25,6 +25,8 @@ function Home(props) {
     RESET_TOAST();
   } else if (token && favAdded) {
     toast.success('Added Favorite successfully!');
+    const { RESET_TOAST } = props;
+    RESET_TOAST();
   }
 
   return token === null ? (

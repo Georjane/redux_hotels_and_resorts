@@ -8,7 +8,7 @@ const Footer = () => (
     <p>Sign up to receive exclusive offers and news from Address Hotels + Resorts</p>
     <Link
       to={{
-        pathname: '/register',
+        pathname: '/home',
       }}
     >
       <span className="btn btn-primary btn-lg footerbtn" role="button">Learn more</span>

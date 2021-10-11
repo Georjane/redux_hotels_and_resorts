@@ -60,7 +60,7 @@ const rootReducer = (state = initialState, action) => {
 
     case 'RESET_TOAST': {
       return {
-        ...state, error: '',
+        ...state, error: '', favAdded: false,
       };
     }
     case 'ADDFAV': {
